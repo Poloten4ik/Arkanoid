@@ -10,8 +10,6 @@ public class Block : MonoBehaviour
     public int hit;
     public Sprite[] nextImage;
     private SpriteRenderer currentImage;
-    public int score;
-    private int scorePannel = 0;
 
     private void Start()
     {
@@ -22,8 +20,7 @@ public class Block : MonoBehaviour
         hit--;
         if (hit == 0)
         {
-            Destroy(gameObject);
-            scorePannel += 10;         
+            Destroy(gameObject);        
         }
         else
         {
@@ -35,9 +32,14 @@ public class Block : MonoBehaviour
     private void NextLevel()
     {
         var blocks = FindObjectsOfType<Block>();
-        if (blocks.Length <= 1)
+        if (blocks.Length - 1 <= 0)
         {
             SceneManager.LoadScene(1);
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }

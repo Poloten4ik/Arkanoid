@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Ball : MonoBehaviour
     bool isStarted;
     public Pad pad;
     float yPosition;
+    public int lives;
 
     void Start()
     {
@@ -37,13 +39,13 @@ public class Ball : MonoBehaviour
 
         UpdateBall();
         isStarted = false;
-        speed = default; 
+        rb.velocity = Vector2.zero;
+        lives--;
     }
 
     private void StartBall()
     {
-
-        Vector2 force = new Vector2(-1, -1) * speed;
+        Vector2 force = new Vector2(Random.Range(-1f, 1f), -1) * speed;
 
         rb.AddForce(force);
         isStarted = true;
@@ -54,11 +56,17 @@ public class Ball : MonoBehaviour
         Vector3 padPosition = pad.transform.position;
         Vector3 ballNewPosition = new Vector3(padPosition.x, yPosition, 0);
         transform.position = ballNewPosition;
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-
-        StartCoroutine(Restart());
+        if (lives > 1)
+        {
+            StartCoroutine(Restart());
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+        
     }
 }

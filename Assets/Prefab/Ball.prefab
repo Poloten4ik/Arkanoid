@@ -136,3 +136,4 @@ MonoBehaviour:
   speed: 450
   rb: {fileID: 6317778903937472706}
   pad: {fileID: 0}
+  lives: 3
