@@ -8,6 +8,12 @@ public class Ball : MonoBehaviour
     public Rigidbody2D rb;
     bool isStarted;
     public Pad pad;
+    float yPosition;
+
+    void Start()
+    {
+        yPosition = transform.position.y;
+    }
 
     private void Update()
     {
@@ -17,40 +23,42 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            Vector3 padPosition = pad.transform.position;
-
-            Vector3 ballNewPosition = new Vector3(padPosition.x, padPosition.y + 1, 0);
-            transform.position = ballNewPosition;
-
+            UpdateBall();
             if (Input.GetMouseButtonDown(0))
             {
                 StartBall();
             }
         }
+    }
 
+    private IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        UpdateBall();
+        isStarted = false;
+        speed = default; 
     }
 
     private void StartBall()
     {
-        Vector2 force = new Vector2(1, 1) * speed;
+
+        Vector2 force = new Vector2(-1, -1) * speed;
+
         rb.AddForce(force);
         isStarted = true;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
 
-    }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void UpdateBall()
     {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+        Vector3 padPosition = pad.transform.position;
+        Vector3 ballNewPosition = new Vector3(padPosition.x, yPosition, 0);
+        transform.position = ballNewPosition;
 
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
 
+        StartCoroutine(Restart());
     }
 }

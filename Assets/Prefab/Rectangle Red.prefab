@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2541027383752744030
+--- !u!1 &8366920090861791310
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2541027383752744031}
-  - component: {fileID: 2541027383752744029}
-  - component: {fileID: 2541027383752744028}
-  - component: {fileID: 2541027383752744026}
+  - component: {fileID: 8366920092037434871}
+  - component: {fileID: 8366920090861791299}
+  - component: {fileID: 8366920090861791308}
+  - component: {fileID: 8366920090861791309}
   m_Layer: 0
-  m_Name: Block
+  m_Name: Rectangle Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2541027383752744031
+--- !u!4 &8366920092037434871
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2541027383752744030}
+  m_GameObject: {fileID: 8366920090861791310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.14, y: 1.77, z: 1.64}
+  m_LocalPosition: {x: -5.495, y: 2.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2541027383752744029
+--- !u!212 &8366920090861791299
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2541027383752744030}
+  m_GameObject: {fileID: 8366920090861791310}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,24 +72,41 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4373ee477ba72044fa0aaf0ef656376b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0ca2684fad1e824d98a1d96cdf6deb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.7, y: 0.7}
+  m_Size: {x: 1.28, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2541027383752744028
+--- !u!114 &8366920090861791308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366920090861791310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b165dbb27faf32f43bcef172f7c596ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hit: 3
+  nextImage:
+  - {fileID: 21300000, guid: b2f17302e38381646a6e1c4ecd6cd772, type: 3}
+  - {fileID: 21300000, guid: 1cc1965b29d5a52469461b44ed254b9e, type: 3}
+  score: 30
+--- !u!61 &8366920090861791309
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2541027383752744030}
+  m_GameObject: {fileID: 8366920090861791310}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -100,27 +117,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.7, y: 0.7}
+    oldSize: {x: 1.28, y: 0.64}
+    newSize: {x: 1.28, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.28, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &2541027383752744026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2541027383752744030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b165dbb27faf32f43bcef172f7c596ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hit: 1
-  nextImage: []
-  score: 10
