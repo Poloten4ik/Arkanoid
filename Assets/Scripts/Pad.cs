@@ -5,6 +5,8 @@ using UnityEngine;
 public class Pad : MonoBehaviour
 {
     float yPosition;
+
+    public float maxX;
     void Start()
     {
         yPosition = transform.position.y;
@@ -18,6 +20,10 @@ public class Pad : MonoBehaviour
 
         padNewposition.z = 0;
         padNewposition.y = yPosition;
+
+        padNewposition.x = Mathf.Clamp(padNewposition.x, -maxX, maxX);
+
+     
         transform.position = padNewposition;
     }
 }

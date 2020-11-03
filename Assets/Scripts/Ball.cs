@@ -31,6 +31,7 @@ public class Ball : MonoBehaviour
                 StartBall();
             }
         }
+        print(rb.velocity.magnitude);
     }
 
     private IEnumerator Restart()
@@ -39,16 +40,23 @@ public class Ball : MonoBehaviour
 
         UpdateBall();
         isStarted = false;
-        rb.velocity = Vector2.zero;
         lives--;
     }
 
     private void StartBall()
     {
-        Vector2 force = new Vector2(Random.Range(-1f, 1f), -1) * speed;
+        float randomX = Random.Range(-5f, 5f);
+        Vector2 direction = new Vector2(randomX, 1);
+        Vector2 force = direction.normalized * speed;
 
         rb.AddForce(force);
+        rb.velocity = force;
         isStarted = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, rb.velocity);
     }
 
     private void UpdateBall()
@@ -67,6 +75,6 @@ public class Ball : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        
+
     }
 }
