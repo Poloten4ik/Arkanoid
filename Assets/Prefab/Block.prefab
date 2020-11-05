@@ -123,4 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hit: 1
   nextImage: []
-  score: 10
+  points: 0
+  gameManager: {fileID: 0}

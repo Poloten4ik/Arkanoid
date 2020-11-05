@@ -10,31 +10,32 @@ public class Block : MonoBehaviour
     public int hit;
     public Sprite[] nextImage;
     private SpriteRenderer currentImage;
+    public int points;
+
+    GameManager gameManager;
+    Level levelManager;
+
 
     private void Start()
     {
         currentImage = GetComponent<SpriteRenderer>();
+        gameManager = FindObjectOfType<GameManager>();
+        levelManager = FindObjectOfType<Level>();
+
+        levelManager.BlockCreated();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hit--;
         if (hit == 0)
         {
-            Destroy(gameObject);        
+            gameManager.Addscore(points);
+            Destroy(gameObject);
+            levelManager.BlockDestroyed();
         }
         else
         {
             currentImage.sprite = nextImage[hit - 1];
-        }
-        NextLevel();
-    }
-
-    private void NextLevel()
-    {
-        var blocks = FindObjectsOfType<Block>();
-        if (blocks.Length - 1 <= 0)
-        {
-            SceneManager.LoadScene(1);
         }
     }
 

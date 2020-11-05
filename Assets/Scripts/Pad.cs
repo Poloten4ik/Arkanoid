@@ -7,9 +7,12 @@ public class Pad : MonoBehaviour
     float yPosition;
 
     public float maxX;
+
+    Ball ball;
     void Start()
     {
         yPosition = transform.position.y;
+        ball = FindObjectOfType<Ball>();
     }
 
     void Update()

@@ -99,7 +99,8 @@ MonoBehaviour:
   nextImage:
   - {fileID: 21300000, guid: 14fdb9c41fff60b479aacef0832c653f, type: 3}
   - {fileID: 21300000, guid: 86f901889089d0641852164cec54424b, type: 3}
-  score: 30
+  points: 30
+  gameManager: {fileID: 0}
 --- !u!61 &7170364181516063760
 BoxCollider2D:
   m_ObjectHideFlags: 0
