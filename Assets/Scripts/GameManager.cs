@@ -24,17 +24,15 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        ball = FindObjectOfType<Ball>();
-        ball.LivesCount(lives);
+        ball = FindObjectOfType<Ball>();  
      
     }
     private void Start()
     {
         scoreText.text = "0";
         DontDestroyOnLoad(gameObject);
-        asd = lives;
-        livesText.text = asd.ToString();
 
+        UpdateLivesText();
     }
 
 
@@ -43,13 +41,6 @@ public class GameManager : MonoBehaviour
         score += addScore;
         scoreText.text = score.ToString();
     }
-
-    public void Hp(int hp)
-    {
-        asd = hp;
-        livesText.text = asd.ToString();
-    }
-
 
     private void Update()
     {
@@ -67,5 +58,10 @@ public class GameManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void UpdateLivesText()
+    {
+        livesText.text = lives.ToString();
     }
 }

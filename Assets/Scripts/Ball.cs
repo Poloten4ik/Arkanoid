@@ -19,9 +19,7 @@ public class Ball : MonoBehaviour
         yPosition = transform.position.y;
         pad = FindObjectOfType<Pad>();
         print(health);
-
         gameManager = FindObjectOfType<GameManager>();
-
     }
   
     private void Update()
@@ -41,11 +39,6 @@ public class Ball : MonoBehaviour
 
     }
 
-    public void LivesCount(int livesCount)
-    {
-        health = livesCount;
-
-    }
     private IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.3f);
@@ -78,18 +71,18 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        health--;
-        gameManager.Hp(health);
+        gameManager.lives--;
+        gameManager.UpdateLivesText();
 
-        if (health > 0)
+        if (gameManager.lives > 0)
         {
             StartCoroutine(Restart());
         }
         else
         {
             SceneManager.LoadScene(0);
-            health = gameManager.lives;
-        }
-       
+            gameManager.lives = 3;
+            gameManager.UpdateLivesText();
+        }     
     }
 }
