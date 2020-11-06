@@ -72,7 +72,7 @@ public class Ball : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         gameManager.lives--;
-        gameManager.UpdateLivesText();
+        gameManager.HeartsUpdate();
 
         if (gameManager.lives > 0)
         {
@@ -82,7 +82,7 @@ public class Ball : MonoBehaviour
         {
             SceneManager.LoadScene(0);
             gameManager.lives = 3;
-            gameManager.UpdateLivesText();
+            gameManager.HeartsUpdate();
         }     
     }
 }

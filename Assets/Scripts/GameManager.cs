@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int lives = 3;
     bool pauseActive;
     Ball ball;
-    public int asd;
+    public Image[] hearts;
 
     private void Awake()
     {
@@ -31,8 +31,6 @@ public class GameManager : MonoBehaviour
     {
         scoreText.text = "0";
         DontDestroyOnLoad(gameObject);
-
-        UpdateLivesText();
     }
 
 
@@ -60,8 +58,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateLivesText()
+    public void HeartsUpdate()
     {
-        livesText.text = lives.ToString();
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < lives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
     }
 }
