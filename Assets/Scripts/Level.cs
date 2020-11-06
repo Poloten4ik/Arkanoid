@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Level : MonoBehaviour
 {
     public int blockscount;
+    public int Hp;
 
     public void BlockCreated()
     {

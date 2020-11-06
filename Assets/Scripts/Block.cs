@@ -29,7 +29,7 @@ public class Block : MonoBehaviour
         hit--;
         if (hit == 0)
         {
-            gameManager.Addscore(points);
+            gameManager.AddScore(points);
             Destroy(gameObject);
             levelManager.BlockDestroyed();
         }

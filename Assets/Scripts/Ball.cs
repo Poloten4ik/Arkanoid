@@ -10,17 +10,20 @@ public class Ball : MonoBehaviour
     bool isStarted;
     Pad pad;
     float yPosition;
-    public int lives;
+    public int health;
 
-
+    GameManager gameManager;
 
     void Start()
     {
         yPosition = transform.position.y;
         pad = FindObjectOfType<Pad>();
+        print(health);
+
+        gameManager = FindObjectOfType<GameManager>();
 
     }
-
+  
     private void Update()
     {
         if (isStarted)
@@ -38,13 +41,17 @@ public class Ball : MonoBehaviour
 
     }
 
+    public void LivesCount(int livesCount)
+    {
+        health = livesCount;
+
+    }
     private IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.3f);
 
         UpdateBall();
         isStarted = false;
-        lives--;
     }
 
     private void StartBall()
@@ -71,14 +78,18 @@ public class Ball : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (lives > 1)
+        health--;
+        gameManager.Hp(health);
+
+        if (health > 0)
         {
             StartCoroutine(Restart());
         }
         else
         {
             SceneManager.LoadScene(0);
+            health = gameManager.lives;
         }
-
+       
     }
 }

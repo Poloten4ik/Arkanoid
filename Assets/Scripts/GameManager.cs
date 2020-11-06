@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public Text scoreText;
+    public Text livesText;
+    public int lives = 3;
     bool pauseActive;
-    // Start is called before the first frame update
+    Ball ball;
+    public int asd;
 
     private void Awake()
     {
@@ -21,17 +24,33 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+        ball = FindObjectOfType<Ball>();
+        ball.LivesCount(lives);
+     
     }
     private void Start()
     {
         scoreText.text = "0";
         DontDestroyOnLoad(gameObject);
+        asd = lives;
+        livesText.text = asd.ToString();
+
     }
-    public void Addscore(int addscore)
+
+
+    public void AddScore(int addScore)
     {
-        score += addscore;
+        score += addScore;
         scoreText.text = score.ToString();
     }
+
+    public void Hp(int hp)
+    {
+        asd = hp;
+        livesText.text = asd.ToString();
+    }
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -46,7 +65,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0f;
                 pauseActive = true;
             }
-           
+
         }
     }
 }
