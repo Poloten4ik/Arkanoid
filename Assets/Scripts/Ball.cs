@@ -18,7 +18,6 @@ public class Ball : MonoBehaviour
     {
         yPosition = transform.position.y;
         pad = FindObjectOfType<Pad>();
-        print(health);
         gameManager = FindObjectOfType<GameManager>();
     }
   
@@ -83,6 +82,8 @@ public class Ball : MonoBehaviour
             SceneManager.LoadScene(0);
             gameManager.lives = 3;
             gameManager.HeartsUpdate();
+            gameManager.score = default;
+            gameManager.scoreText.text = "0";
         }     
     }
 }
