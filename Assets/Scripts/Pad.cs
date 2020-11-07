@@ -7,7 +7,7 @@ public class Pad : MonoBehaviour
 {
     float yPosition;
     public float maxX;
-
+    public bool autoplay;
     GameManager gameManager;
 
 
@@ -22,20 +22,35 @@ public class Pad : MonoBehaviour
 
     void Update()
     {
+        Game();
+        
+    }
+
+    public void Game()
+    {
         Vector3 padNewposition;
-        if (gameManager.pauseActive)
+        if (autoplay)
         {
             Vector3 ballPos = ball.transform.position;
             padNewposition = new Vector3(ballPos.x, yPosition, 0);
         }
-        else
+
+        else if (gameManager.pauseActive)
+        {
+            padNewposition.x = transform.position.x;
+            padNewposition = new Vector3(padNewposition.x, yPosition, 0);
+        }
+        else 
         {
             Vector3 mousePixelPosition = Input.mousePosition;
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePixelPosition);
+
             padNewposition = new Vector3(mouseWorldPosition.x, yPosition, 0);
 
         }
+       
         padNewposition.x = Mathf.Clamp(padNewposition.x, -maxX, maxX);
         transform.position = padNewposition;
     }
+  
 }

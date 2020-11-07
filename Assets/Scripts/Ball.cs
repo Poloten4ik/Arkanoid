@@ -27,7 +27,7 @@ public class Ball : MonoBehaviour
         {
 
         }
-        else
+        else if (gameManager.pauseActive != true)
         {
             UpdateBall();
             if (Input.GetMouseButtonDown(0))

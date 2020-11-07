@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool pauseActive;
     Ball ball;
     public Image[] hearts;
+    public GameObject pause;
 
     private void Awake()
     {
@@ -43,20 +45,30 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (pauseActive)
-            {
-                Time.timeScale = 1f;
-                pauseActive = false;
-            }
-            else
-            {
+        { 
                 Time.timeScale = 0f;
                 pauseActive = true;
-            }
-
+                pause.SetActive(true);
         }
     }
+
+    public void Pause()
+    {
+            Time.timeScale = 1f;
+            pauseActive = false;
+            pause.SetActive(false); 
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        lives = 3;
+        HeartsUpdate();
+        score = default;
+        scoreText.text = "0";
+        Pause();
+    }
+ 
 
     public void HeartsUpdate()
     {
