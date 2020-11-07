@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
     public Text livesText;
     public int lives = 3;
-    bool pauseActive;
+    public bool pauseActive;
     Ball ball;
     public Image[] hearts;
 
