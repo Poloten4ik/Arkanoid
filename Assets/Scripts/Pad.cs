@@ -33,14 +33,12 @@ public class Pad : MonoBehaviour
 
         else if (gameManager.pauseActive || gameManager.gameOver) 
         {
-            padNewposition.x = transform.position.x;
-            padNewposition = new Vector3(padNewposition.x, yPosition, 0);
+            return;
         }
         else 
         {
             Vector3 mousePixelPosition = Input.mousePosition;
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePixelPosition);
-
             padNewposition = new Vector3(mouseWorldPosition.x, yPosition, 0);
 
         }

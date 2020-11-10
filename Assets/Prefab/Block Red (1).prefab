@@ -124,4 +124,4 @@ MonoBehaviour:
   hit: 1
   nextImage: []
   points: 10
-  gameManager: {fileID: 0}
+  "can\u0412eDestroyed": 1

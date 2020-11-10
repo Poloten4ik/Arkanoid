@@ -99,6 +99,7 @@ MonoBehaviour:
   nextImage:
   - {fileID: 21300000, guid: 292b0324c4ebc0e4fb06f377b1f4bbf1, type: 3}
   points: 50
+  "can\u0412eDestroyed": 1
 --- !u!61 &9191706655695823135
 BoxCollider2D:
   m_ObjectHideFlags: 0

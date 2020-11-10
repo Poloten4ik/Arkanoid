@@ -65,13 +65,11 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(0);
-        lives = 3;
         HeartsUpdate();
-        score = default;
-        scoreText.text = "0";
         UnPause();
         gameover.SetActive(false);
         gameOver = false;
+        Destroy(gameObject);
     }
 
     public void GameOver()

@@ -99,7 +99,7 @@ MonoBehaviour:
   nextImage:
   - {fileID: 21300000, guid: a847fbd07bea33e499f052b30091679a, type: 3}
   points: 20
-  gameManager: {fileID: 0}
+  "can\u0412eDestroyed": 1
 --- !u!60 &5600658491213949078
 PolygonCollider2D:
   m_ObjectHideFlags: 0

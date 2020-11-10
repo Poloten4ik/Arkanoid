@@ -3733,6 +3733,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 2997805937618822335, guid: 8f4cb5957dc94a84197de7619b0e79b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2997805938946836691, guid: 8f4cb5957dc94a84197de7619b0e79b1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3861,6 +3866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Game Over
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334218204316704702, guid: a1cdc9894605aea4eaf55a699d8a2614,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4334218205263342790, guid: a1cdc9894605aea4eaf55a699d8a2614,
         type: 3}
@@ -4436,6 +4446,11 @@ PrefabInstance:
       propertyPath: pad
       value: 
       objectReference: {fileID: 767598326}
+    - target: {fileID: 6317778903937472710, guid: 883656ae09a029e49b2cc43801f616f2,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6317778903937472711, guid: 883656ae09a029e49b2cc43801f616f2,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -4563,6 +4578,11 @@ PrefabInstance:
     - target: {fileID: 6881367482968809797, guid: 7d7a13705f119cc42b87660f15dbf20c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881367482968809799, guid: 7d7a13705f119cc42b87660f15dbf20c,
+        type: 3}
+      propertyPath: autoplay
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

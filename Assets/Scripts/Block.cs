@@ -13,9 +13,11 @@ public class Block : MonoBehaviour
     public int points;
     GameManager gameManager;
     Level levelManager;
+    public bool canВeDestroyed;
 
     private void Start()
     {
+
         currentImage = GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
         levelManager = FindObjectOfType<Level>();
@@ -24,15 +26,20 @@ public class Block : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         hit--;
-        if (hit == 0)
+
+        if (canВeDestroyed)
         {
-            gameManager.AddScore(points);
-            Destroy(gameObject);
-            levelManager.BlockDestroyed();
+            if (hit == 0)
+            {
+                gameManager.AddScore(points);
+                Destroy(gameObject);
+                levelManager.BlockDestroyed();
+            }
+            else
+            {
+                currentImage.sprite = nextImage[hit - 1];
+            }
         }
-        else
-        {
-            currentImage.sprite = nextImage[hit - 1];
-        }
+    
     }
 }

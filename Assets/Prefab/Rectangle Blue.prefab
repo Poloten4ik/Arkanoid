@@ -100,7 +100,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7abf58fdc9469bb4c854b6eb87d20736, type: 3}
   - {fileID: 21300000, guid: 84f2a8032285cbd4ba202b2de709559e, type: 3}
   points: 30
-  gameManager: {fileID: 0}
+  "can\u0412eDestroyed": 1
 --- !u!61 &7760646502077718691
 BoxCollider2D:
   m_ObjectHideFlags: 0
