@@ -125,10 +125,14 @@ MonoBehaviour:
   scoreText: {fileID: 6191348552006788436}
   livesText: {fileID: 0}
   lives: 3
+  pauseActive: 0
   hearts:
   - {fileID: 4785222025494896134}
   - {fileID: 3629282933022623670}
   - {fileID: 3373144640865130996}
+  pause: {fileID: 0}
+  gameover: {fileID: 0}
+  gameoverText: {fileID: 0}
 --- !u!1 &4785222025333182720
 GameObject:
   m_ObjectHideFlags: 0

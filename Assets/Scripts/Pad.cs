@@ -9,21 +9,17 @@ public class Pad : MonoBehaviour
     public float maxX;
     public bool autoplay;
     GameManager gameManager;
-
-
     Ball ball;
     void Start()
     {
         yPosition = transform.position.y;
         ball = FindObjectOfType<Ball>();
         gameManager = FindObjectOfType<GameManager>();
-  
     }
 
     void Update()
     {
         Game();
-        
     }
 
     public void Game()
@@ -35,7 +31,7 @@ public class Pad : MonoBehaviour
             padNewposition = new Vector3(ballPos.x, yPosition, 0);
         }
 
-        else if (gameManager.pauseActive)
+        else if (gameManager.pauseActive || gameManager.gameOver) 
         {
             padNewposition.x = transform.position.x;
             padNewposition = new Vector3(padNewposition.x, yPosition, 0);
@@ -48,9 +44,7 @@ public class Pad : MonoBehaviour
             padNewposition = new Vector3(mouseWorldPosition.x, yPosition, 0);
 
         }
-       
         padNewposition.x = Mathf.Clamp(padNewposition.x, -maxX, maxX);
         transform.position = padNewposition;
     }
-  
 }

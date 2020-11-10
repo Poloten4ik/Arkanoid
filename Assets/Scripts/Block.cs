@@ -11,17 +11,14 @@ public class Block : MonoBehaviour
     public Sprite[] nextImage;
     private SpriteRenderer currentImage;
     public int points;
-
     GameManager gameManager;
     Level levelManager;
-
 
     private void Start()
     {
         currentImage = GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
         levelManager = FindObjectOfType<Level>();
-
         levelManager.BlockCreated();
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -37,10 +34,5 @@ public class Block : MonoBehaviour
         {
             currentImage.sprite = nextImage[hit - 1];
         }
-    }
-
-    private void Update()
-    {
-        
     }
 }

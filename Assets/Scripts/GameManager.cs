@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     Ball ball;
     public Image[] hearts;
     public GameObject pause;
+    public GameObject gameover;
+    public Text gameoverText;
+
+    public bool gameOver;
 
     private void Awake()
     {
@@ -26,15 +30,14 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        ball = FindObjectOfType<Ball>();  
-     
+        ball = FindObjectOfType<Ball>();
     }
+
     private void Start()
     {
         scoreText.text = "0";
         DontDestroyOnLoad(gameObject);
     }
-
 
     public void AddScore(int addScore)
     {
@@ -45,18 +48,18 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        { 
-                Time.timeScale = 0f;
-                pauseActive = true;
-                pause.SetActive(true);
+        {
+            Time.timeScale = 0f;
+            pauseActive = true;
+            pause.SetActive(true);
         }
     }
 
-    public void Pause()
+    public void UnPause()
     {
-            Time.timeScale = 1f;
-            pauseActive = false;
-            pause.SetActive(false); 
+        Time.timeScale = 1f;
+        pauseActive = false;
+        pause.SetActive(false);
     }
 
     public void Restart()
@@ -66,9 +69,20 @@ public class GameManager : MonoBehaviour
         HeartsUpdate();
         score = default;
         scoreText.text = "0";
-        Pause();
+        UnPause();
+        gameover.SetActive(false);
+        gameOver = false;
     }
- 
+
+    public void GameOver()
+    {
+        if (lives == 0)
+        {
+            gameover.SetActive(true);
+            gameoverText.text = score.ToString();
+            gameOver = true;
+        }
+    }
 
     public void HeartsUpdate()
     {

@@ -11,7 +11,6 @@ public class Ball : MonoBehaviour
     Pad pad;
     float yPosition;
     public int health;
-
     GameManager gameManager;
 
     void Start()
@@ -35,20 +34,18 @@ public class Ball : MonoBehaviour
                 StartBall();
             }
         }
-
     }
 
     private IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.3f);
-
         UpdateBall();
         isStarted = false;
     }
 
     private void StartBall()
     {
-        float randomX = Random.Range(-0f, 0f);
+        float randomX = Random.Range(-1f, 1f);
         Vector2 direction = new Vector2(randomX, 1);
         Vector2 force = direction.normalized * speed;
 
@@ -68,6 +65,7 @@ public class Ball : MonoBehaviour
         Vector3 ballNewPosition = new Vector3(padPosition.x, yPosition, 0);
         transform.position = ballNewPosition;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         gameManager.lives--;
@@ -79,11 +77,7 @@ public class Ball : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(0);
-            gameManager.lives = 3;
-            gameManager.HeartsUpdate();
-            gameManager.score = default;
-            gameManager.scoreText.text = "0";
-        }     
+           gameManager.GameOver();
+        }
     }
 }
