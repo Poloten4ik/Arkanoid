@@ -133,6 +133,7 @@ MonoBehaviour:
   pause: {fileID: 0}
   gameover: {fileID: 0}
   gameoverText: {fileID: 0}
+  gameOver: 0
 --- !u!1 &4785222025333182720
 GameObject:
   m_ObjectHideFlags: 0

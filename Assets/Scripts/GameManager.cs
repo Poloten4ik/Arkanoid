@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
             if (gameManagers[i].gameObject != gameObject)
             {
                 Destroy(gameObject);
+                gameObject.SetActive(false);
                 break;
             }
         }

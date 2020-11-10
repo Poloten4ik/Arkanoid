@@ -13,7 +13,6 @@ public class Block : MonoBehaviour
     public int points;
     GameManager gameManager;
     Level levelManager;
-    public bool canВeDestroyed;
 
     private void Start()
     {
@@ -27,9 +26,7 @@ public class Block : MonoBehaviour
     {
         hit--;
 
-        if (canВeDestroyed)
-        {
-            if (hit == 0)
+        if (hit == 0)
             {
                 gameManager.AddScore(points);
                 Destroy(gameObject);
@@ -39,7 +36,7 @@ public class Block : MonoBehaviour
             {
                 currentImage.sprite = nextImage[hit - 1];
             }
-        }
+        
     
     }
 }
