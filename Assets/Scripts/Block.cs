@@ -10,19 +10,19 @@ using static UnityEngine.ParticleSystem;
 public class Block : MonoBehaviour
 {
     public int hit;
-    private SpriteRenderer sr;
-
     public Sprite[] nextImage;
     private SpriteRenderer currentImage;
     public int points;
     GameManager gameManager;
     Level levelManager;
     public ParticleSystem DestroyEffect;
+    public GameObject pickupPrefab;
 
-   
+    public Color color;
+
+
     private void Start()
     {
-        this.sr = this.GetComponent<SpriteRenderer>();
         currentImage = GetComponent<SpriteRenderer>();
         gameManager = FindObjectOfType<GameManager>();
         levelManager = FindObjectOfType<Level>();
@@ -33,27 +33,34 @@ public class Block : MonoBehaviour
         hit--;
 
         if (hit == 0)
-            {
-                gameManager.AddScore(points);
-                Destroy(gameObject);
-                levelManager.BlockDestroyed();
-            SpawnDectroeEffect();
-            }
-            else
-            {
-                currentImage.sprite = nextImage[hit - 1];
-            }
+        {
+            DestroyBlock();
+        }
+        else
+        {
+            currentImage.sprite = nextImage[hit - 1];
+        }
     }
 
+    private void DestroyBlock()
+    {
+        gameManager.AddScore(points);
+        Destroy(gameObject);
+        levelManager.BlockDestroyed();
+        SpawnDectroeEffect();
+
+        Instantiate(pickupPrefab,transform.position,Quaternion.identity);
+
+    }
     private void SpawnDectroeEffect()
     {
         Vector3 blockPos = gameObject.transform.position;
-        Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z - 0.2f);
+        Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z);
         GameObject effect = Instantiate(DestroyEffect.gameObject, spawnPosition, Quaternion.identity);
 
         MainModule mm = effect.GetComponent<ParticleSystem>().main;
 
-        mm.startColor = this.sr.color;
+        mm.startColor = color;
         Destroy(effect, DestroyEffect.main.startLifetime.constant);
 
     }

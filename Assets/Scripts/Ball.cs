@@ -45,11 +45,10 @@ public class Ball : MonoBehaviour
 
     private void StartBall()
     {
-        float randomX = Random.Range(-1f, 1f);
+        float randomX = Random.Range(0f, 0f);
         Vector2 direction = new Vector2(randomX, 1);
         Vector2 force = direction.normalized * speed;
 
-        rb.AddForce(force);
         rb.velocity = force;
         isStarted = true;
     }
