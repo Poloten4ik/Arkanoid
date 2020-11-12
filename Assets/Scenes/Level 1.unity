@@ -151,6 +151,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 6317778903937472710, guid: 883656ae09a029e49b2cc43801f616f2,
+        type: 3}
+      propertyPath: speed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6317778903937472711, guid: 883656ae09a029e49b2cc43801f616f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1612,6 +1617,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 240670590}
     m_Modifications:
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
+      objectReference: {fileID: 0}
     - target: {fileID: 1274787798865358686, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
         type: 3}
       propertyPath: m_Name
@@ -1936,7 +1956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1086384681
 Transform:
   m_ObjectHideFlags: 0
@@ -3611,6 +3631,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 240670590}
     m_Modifications:
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274787798865358675, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
+      objectReference: {fileID: 0}
     - target: {fileID: 1274787798865358686, guid: 63dbd539315e4314ea6a0d7561e8c0e1,
         type: 3}
       propertyPath: m_Name
