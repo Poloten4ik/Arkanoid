@@ -124,8 +124,8 @@ MonoBehaviour:
   hit: 1
   nextImage: []
   points: 10
-  DestroyEffect: {fileID: 8574165115354046933, guid: 71414bf009f92db4a81e7c633e8bf3e5,
-    type: 3}
   pickupPrefab: {fileID: 7713320899664945840, guid: ca037d5a4cd0d7b48a252e4168833420,
+    type: 3}
+  destroyEffectPrefab: {fileID: 8574165115354046933, guid: 71414bf009f92db4a81e7c633e8bf3e5,
     type: 3}
   color: {r: 1, g: 0.8000001, b: 0, a: 1}

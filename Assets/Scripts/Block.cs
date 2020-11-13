@@ -15,8 +15,8 @@ public class Block : MonoBehaviour
     public int points;
     GameManager gameManager;
     Level levelManager;
-    public ParticleSystem DestroyEffect;
     public GameObject pickupPrefab;
+    public ParticleSystem destroyEffectPrefab;
 
     public Color color;
 
@@ -45,23 +45,20 @@ public class Block : MonoBehaviour
     private void DestroyBlock()
     {
         gameManager.AddScore(points);
-        Destroy(gameObject);
         levelManager.BlockDestroyed();
         SpawnDectroeEffect();
-
         Instantiate(pickupPrefab,transform.position,Quaternion.identity);
-
+        Destroy(gameObject);
     }
     private void SpawnDectroeEffect()
     {
         Vector3 blockPos = gameObject.transform.position;
         Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z);
-        GameObject effect = Instantiate(DestroyEffect.gameObject, spawnPosition, Quaternion.identity);
+        GameObject effect = Instantiate(destroyEffectPrefab.gameObject, spawnPosition, Quaternion.identity);
 
         MainModule mm = effect.GetComponent<ParticleSystem>().main;
-
         mm.startColor = color;
-        Destroy(effect, DestroyEffect.main.startLifetime.constant);
 
+        Destroy(effect, destroyEffectPrefab.main.startLifetime.constant);
     }
 }

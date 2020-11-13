@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public int score;
     public Text scoreText;
-    public Text livesText;
     public int lives = 3;
     public bool pauseActive;
     Ball ball;

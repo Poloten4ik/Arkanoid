@@ -10,6 +10,7 @@ public class PickupScore : MonoBehaviour
     {
         GameManager gameManager = FindObjectOfType<GameManager>();
         gameManager.AddScore(points);
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,6 +18,10 @@ public class PickupScore : MonoBehaviour
         {
             //TODO added effect;
             ApplyEffect();
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("LoseGame"))
+        {
             Destroy(gameObject);
         }
     }

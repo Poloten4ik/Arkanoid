@@ -5,16 +5,35 @@ using UnityEngine;
 public class LoseGame : MonoBehaviour
 {
     GameManager gameManager;
+    Ball ball;
+    PickupScore pickup;
 
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        ball = FindObjectOfType<Ball>();
+        pickup = FindObjectOfType<PickupScore>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Destroy(gameObject);
+
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            gameManager.lives--;
+            gameManager.HeartsUpdate();
+
+
+            if (gameManager.lives > 0)
+            {
+                StartCoroutine(ball.Restart());
+            }
+            else
+            {
+                gameManager.GameOver();
+            }
+        }
+      
+        
     }
-
-
 }

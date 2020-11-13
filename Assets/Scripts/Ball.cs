@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private IEnumerator Restart()
+    public IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.3f);
         UpdateBall();
@@ -65,18 +65,5 @@ public class Ball : MonoBehaviour
         transform.position = ballNewPosition;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        gameManager.lives--;
-        gameManager.HeartsUpdate();
-
-        if (gameManager.lives > 0)
-        {
-            StartCoroutine(Restart());
-        }
-        else
-        {
-           gameManager.GameOver();
-        }
-    }
+  
 }
