@@ -9,15 +9,18 @@ public class GameManager : MonoBehaviour
     public int score;
     public Text scoreText;
     public int lives = 3;
+
+    [HideInInspector]
     public bool pauseActive;
+    [HideInInspector]
+
+    public bool gameOver;
+    public Text gameoverText;
     Ball ball;
     public Image[] hearts;
     public GameObject pause;
     public GameObject gameover;
-    public Text gameoverText;
-
-    public bool gameOver;
-
+   
     private void Awake()
     {
         GameManager[] gameManagers = FindObjectsOfType<GameManager>();
@@ -26,7 +29,7 @@ public class GameManager : MonoBehaviour
             if (gameManagers[i].gameObject != gameObject)
             {
                 Destroy(gameObject);
-                //gameObject.SetActive(false);
+                gameObject.SetActive(false);
                 break;
             }
         }
@@ -55,6 +58,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoseLife()
+    {
+        lives--;
+        HeartsUpdate();
+
+        if (lives > 0)
+        {
+            StartCoroutine(ball.Restart());
+        }
+        else
+        {
+           GameOver();
+        }
+    }
+
     public void UnPause()
     {
         Time.timeScale = 1f;
@@ -79,6 +97,7 @@ public class GameManager : MonoBehaviour
             gameover.SetActive(true);
             gameoverText.text = score.ToString();
             gameOver = true;
+            Time.timeScale = 0;
         }
     }
 

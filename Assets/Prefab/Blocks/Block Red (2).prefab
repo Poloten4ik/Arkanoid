@@ -124,8 +124,16 @@ MonoBehaviour:
   hit: 1
   nextImage: []
   points: 10
-  pickupPrefab: {fileID: 7713320899664945840, guid: ca037d5a4cd0d7b48a252e4168833420,
-    type: 3}
   destroyEffectPrefab: {fileID: 8574165115354046933, guid: 71414bf009f92db4a81e7c633e8bf3e5,
     type: 3}
+  ballPrefab: {fileID: 6317778903937472707, guid: 883656ae09a029e49b2cc43801f616f2,
+    type: 3}
+  Buff:
+  - {fileID: 7236383135489083932, guid: 432602b041e440e41bffc49e73d3b710, type: 3}
+  - {fileID: 3557601712819316183, guid: 8973c3bffcd60a543a6a714dda9ddea3, type: 3}
+  BuffChance: 0
+  DeBuff:
+  - {fileID: 7236383135489083932, guid: 936b8092db57ca345bdbfbc6be3e2b3a, type: 3}
+  - {fileID: 3557601712819316183, guid: 961fb21f23c9cd3439fe0f5259bd72fb, type: 3}
+  DeBuffChance: 0
   color: {r: 0.62352943, g: 0.8117648, b: 0.19215688, a: 1}

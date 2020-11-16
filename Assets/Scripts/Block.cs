@@ -15,9 +15,10 @@ public class Block : MonoBehaviour
     public int points;
     GameManager gameManager;
     Level levelManager;
-    public GameObject pickupPrefab;
     public ParticleSystem destroyEffectPrefab;
-
+    CollectablesManager collectablesManager;
+    public GameObject[] Buff;
+    public GameObject[] DeBuff;
     public Color color;
 
 
@@ -27,6 +28,8 @@ public class Block : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         levelManager = FindObjectOfType<Level>();
         levelManager.BlockCreated();
+
+        collectablesManager = FindObjectOfType<CollectablesManager>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -47,13 +50,41 @@ public class Block : MonoBehaviour
         gameManager.AddScore(points);
         levelManager.BlockDestroyed();
         SpawnDectroeEffect();
-        Instantiate(pickupPrefab,transform.position,Quaternion.identity);
+        Change();
         Destroy(gameObject);
+    }
+
+    private void Change()
+    {
+        float pickUpChange = UnityEngine.Random.Range(0, 100);
+        float buffSpawnChange = UnityEngine.Random.Range(0, 100);
+        float deBuffSpawnChange = UnityEngine.Random.Range(0, 100f);
+
+        bool alreadySpawned = false;
+
+        if (pickUpChange < collectablesManager.PickUpChange)
+        {
+            if (buffSpawnChange < collectablesManager.BuffChance && alreadySpawned == false)
+            {
+                int change = UnityEngine.Random.Range(0, Buff.Length);
+
+                Instantiate(Buff[change], transform.position, Quaternion.identity);
+                alreadySpawned = true;
+
+            }
+            if (deBuffSpawnChange < collectablesManager.Debuff && alreadySpawned == false)
+            {
+                int change = UnityEngine.Random.Range(0, DeBuff.Length);
+                Instantiate(DeBuff[change], transform.position, Quaternion.identity);
+                alreadySpawned = true;
+            }
+        }
+      
     }
     private void SpawnDectroeEffect()
     {
         Vector3 blockPos = gameObject.transform.position;
-        Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z);
+        Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z + 0.1f);
         GameObject effect = Instantiate(destroyEffectPrefab.gameObject, spawnPosition, Quaternion.identity);
 
         MainModule mm = effect.GetComponent<ParticleSystem>().main;

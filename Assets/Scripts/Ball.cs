@@ -7,11 +7,13 @@ public class Ball : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
-    bool isStarted;
-    Pad pad;
+    public bool isStarted;
     float yPosition;
     public int health;
+    Pad pad;
     GameManager gameManager;
+    public bool speedUp;
+    public bool speedDown;
 
     void Start()
     {
@@ -19,7 +21,7 @@ public class Ball : MonoBehaviour
         pad = FindObjectOfType<Pad>();
         gameManager = FindObjectOfType<GameManager>();
     }
-  
+
     private void Update()
     {
         if (isStarted)
@@ -39,21 +41,20 @@ public class Ball : MonoBehaviour
     public IEnumerator Restart()
     {
         yield return new WaitForSeconds(0.3f);
-        UpdateBall();
+        rb.velocity = Vector2.zero;
         isStarted = false;
     }
 
-    private void StartBall()
+    public void StartBall()
     {
-        float randomX = Random.Range(0f, 0f);
+        float randomX = Random.Range(-1f, 1f);
         Vector2 direction = new Vector2(randomX, 1);
         Vector2 force = direction.normalized * speed;
-
         rb.velocity = force;
         isStarted = true;
     }
 
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, rb.velocity);
     }
@@ -64,6 +65,4 @@ public class Ball : MonoBehaviour
         Vector3 ballNewPosition = new Vector3(padPosition.x, yPosition, 0);
         transform.position = ballNewPosition;
     }
-
-  
 }
