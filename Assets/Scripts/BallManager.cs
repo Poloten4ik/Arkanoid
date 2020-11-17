@@ -60,8 +60,6 @@ public class BallManager : MonoBehaviour
 
             }
         }
-
-
     }
 
     public void SpawnBalls(Vector3 position, int count)

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
+
+    public Collider2D colliderBall;
     public void Die()
     {
         GameManager.Instance.LoseLife();

@@ -82,6 +82,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AddLife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            HeartsUpdate();
+        }
+    }
+
+    public void LifeLose()
+    {
+        if (lives > 0)
+        {
+            lives--;
+            HeartsUpdate();
+        }
+        
+        {
+            GameOver();
+        }
+    }
+
     public void UnPause()
     {
         Time.timeScale = 1f;
