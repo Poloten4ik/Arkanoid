@@ -9,6 +9,9 @@ public abstract class PickUps : MonoBehaviour
         if (collision.gameObject.CompareTag("Pad"))
         {
             ApplyEffect();
+        }
+        if (collision.tag == "Pad" || collision.tag == "LoseGame")
+        {
             Destroy(gameObject);
         }
         

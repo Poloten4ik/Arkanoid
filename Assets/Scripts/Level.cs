@@ -17,8 +17,9 @@ public class Level : MonoBehaviour
         blockscount--;
         if (blockscount <= 0)
         {
-              int index = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(index + 1);  
+            int index = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(index + 1);
+            GameManager.Instance.isStarted = false;
         }
     }
 }

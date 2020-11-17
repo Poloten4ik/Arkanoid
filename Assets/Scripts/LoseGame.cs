@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class LoseGame : MonoBehaviour
 {
-    GameManager gameManager;
-    Ball ball;
-    private void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
-        ball = FindObjectOfType<Ball>();
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.tag == "Ball")
         {
-            gameManager.LoseLife();
-        }
-        else
-        {
-            Destroy(collision.gameObject);
-        }
+            Ball ball = collision.GetComponent<Ball>();
+            BallManager.Instance.Balls.Remove(ball);
+            ball.Die();
+        }   
     }
 }

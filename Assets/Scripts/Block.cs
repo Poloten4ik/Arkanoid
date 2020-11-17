@@ -9,7 +9,7 @@ using static UnityEngine.ParticleSystem;
 
 public class Block : MonoBehaviour
 {
-    public int hit;
+    public int hit = 1;
     public Sprite[] nextImage;
     private SpriteRenderer currentImage;
     public int points;
@@ -17,8 +17,6 @@ public class Block : MonoBehaviour
     Level levelManager;
     public ParticleSystem destroyEffectPrefab;
     CollectablesManager collectablesManager;
-    public GameObject[] Buff;
-    public GameObject[] DeBuff;
     public Color color;
 
 
@@ -35,7 +33,7 @@ public class Block : MonoBehaviour
     {
         hit--;
 
-        if (hit == 0)
+        if (hit <= 0)
         {
             DestroyBlock();
         }
@@ -44,6 +42,8 @@ public class Block : MonoBehaviour
             currentImage.sprite = nextImage[hit - 1];
         }
     }
+
+
 
     private void DestroyBlock()
     {
@@ -56,30 +56,38 @@ public class Block : MonoBehaviour
 
     private void Change()
     {
-        float pickUpChange = UnityEngine.Random.Range(0, 100);
         float buffSpawnChange = UnityEngine.Random.Range(0, 100);
         float deBuffSpawnChange = UnityEngine.Random.Range(0, 100f);
-
         bool alreadySpawned = false;
 
-        if (pickUpChange < collectablesManager.PickUpChange)
+
+        if (buffSpawnChange <= collectablesManager.BuffChance)
         {
-            if (buffSpawnChange < collectablesManager.BuffChance && alreadySpawned == false)
-            {
-                int change = UnityEngine.Random.Range(0, Buff.Length);
-
-                Instantiate(Buff[change], transform.position, Quaternion.identity);
-                alreadySpawned = true;
-
-            }
-            if (deBuffSpawnChange < collectablesManager.Debuff && alreadySpawned == false)
-            {
-                int change = UnityEngine.Random.Range(0, DeBuff.Length);
-                Instantiate(DeBuff[change], transform.position, Quaternion.identity);
-                alreadySpawned = true;
-            }
+            alreadySpawned = true;
+            PickUps newBuff = SpawnPickUps(true);
         }
-      
+
+        if (deBuffSpawnChange <= collectablesManager.DebuffChance && !alreadySpawned)
+        {
+            PickUps newDebuff = SpawnPickUps(false);
+        }
+    }
+
+    private PickUps SpawnPickUps(bool isBuff)
+    {
+        List<PickUps> collection;
+        if (isBuff)
+        {
+            collection = collectablesManager.AvailableBuffs;
+        }
+        else
+        {
+            collection = collectablesManager.AvailableDeBuffs;
+        }
+        int buffIndex = UnityEngine.Random.Range(0, collection.Count);
+        PickUps prefab = collection[buffIndex];
+        PickUps newCollectable = Instantiate(prefab, this.transform.position, Quaternion.identity);
+        return newCollectable;
     }
     private void SpawnDectroeEffect()
     {

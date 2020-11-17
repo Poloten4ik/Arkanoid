@@ -1,14 +1,11 @@
-﻿public class MultiBall : PickUps 
+﻿using System.Linq;
+public class MultiBall : PickUps
 {
     public override void ApplyEffect()
     {
-        Ball ball = FindObjectOfType<Ball>();
-
-        for (int i = 0; i < 2; i++)
+        foreach (Ball balls in BallManager.Instance.Balls.ToList())
         {
-            Instantiate(ball);
-            //ball.isStarted = true;
-            ball.StartBall();
-        }
+            BallManager.Instance.SpawnBalls(balls.gameObject.transform.position, 2);
+        }   
     }
 }

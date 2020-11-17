@@ -12,9 +12,27 @@ public class Pad : MonoBehaviour
     GameManager gameManager;
     Ball ball;
     private SpriteRenderer sr;
-
     private float Clamp ;
 
+    #region Singleton
+
+    private static Pad _instance;
+
+    public static Pad Instance => _instance;
+
+    private void Awake()
+    {
+        
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    #endregion
 
     void Start()
     {
@@ -22,7 +40,6 @@ public class Pad : MonoBehaviour
         ball = FindObjectOfType<Ball>();
         gameManager = FindObjectOfType<GameManager>();
         sr = GetComponent<SpriteRenderer>();
-        print(sr.size.x);
     }
 
     void Update()
@@ -35,11 +52,11 @@ public class Pad : MonoBehaviour
         Vector3 padNewposition;
         if (autoplay)
         {
-            Vector3 ballPos = ball.transform.position;
+            Vector3 ballPos = BallManager.Instance.initialBall.transform.position;
             padNewposition = new Vector3(ballPos.x, yPosition, 0);
-        }
 
-        else if (gameManager.pauseActive || gameManager.gameOver)
+        }
+      else if (gameManager.pauseActive || gameManager.gameOver)
         {
             return;
         }
@@ -55,9 +72,5 @@ public class Pad : MonoBehaviour
         padNewposition.x = Mathf.Clamp(padNewposition.x,-Clamp, Clamp );
         transform.position = padNewposition;
 
-
-        //float mousePositionPixels = Mathf.Clamp(Input.mousePosition.x, leftClamp, rightClamp);
-        //float mousePositionX = mainCamera.ScreenToWorldPoint(new Vector3(mousePositionPixels, 0, 0)).x;
-        //this.transform.position = new Vector3(mousePositionX, yPosition, 0);
     }
 }

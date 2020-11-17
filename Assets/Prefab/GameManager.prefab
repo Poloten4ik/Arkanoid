@@ -43,29 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744938bfb09e84b409d0a10254641011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increasesScorePrefab: {fileID: 7713320899664945840, guid: ca037d5a4cd0d7b48a252e4168833420,
-    type: 3}
-  decreasesScorePrefab: {fileID: 7713320899664945840, guid: 027b8e1ef5f20f84291e4e4bc23eb3e7,
-    type: 3}
-  multiBallPrefab: {fileID: 8817559890105495212, guid: 01339dbb91145b2478cf2abaae2f0fd0,
-    type: 3}
-  scaleIncreases: {fileID: 3557601712819316183, guid: 8973c3bffcd60a543a6a714dda9ddea3,
-    type: 3}
-  scaleDecreases: {fileID: 3557601712819316183, guid: 961fb21f23c9cd3439fe0f5259bd72fb,
-    type: 3}
-  ballScaleIncreases: {fileID: 2492600036242764535, guid: 009d048f26c6f2548b58e54ee2b021e2,
-    type: 3}
-  ballScaleDecreases: {fileID: 2492600036242764535, guid: 88819e00f4689a44496f96b4100873ac,
-    type: 3}
-  restartBall: {fileID: 5860844532823027251, guid: 4cd46efc2e0afcc449deb4119cea3a21,
-    type: 3}
-  addLife: {fileID: 7236383135489083932, guid: 432602b041e440e41bffc49e73d3b710, type: 3}
-  loseLife: {fileID: 7236383135489083932, guid: 936b8092db57ca345bdbfbc6be3e2b3a,
-    type: 3}
-  speedUp: {fileID: 2983590395433641343, guid: 957fd0ae6ba602a499fd9a53e739b797, type: 3}
-  PickUpChange: 25
-  BuffChance: 50
-  Debuff: 50
+  AvailableBuffs:
+  - {fileID: 7236383135489083931, guid: 432602b041e440e41bffc49e73d3b710, type: 3}
+  - {fileID: 2492600036242764532, guid: 009d048f26c6f2548b58e54ee2b021e2, type: 3}
+  - {fileID: 807503376756157358, guid: ca037d5a4cd0d7b48a252e4168833420, type: 3}
+  - {fileID: 5860844532823027260, guid: 4cd46efc2e0afcc449deb4119cea3a21, type: 3}
+  - {fileID: -1610560992535100988, guid: 01339dbb91145b2478cf2abaae2f0fd0, type: 3}
+  - {fileID: -6081211723342981416, guid: 7b6857888b2aa4f48b8176c735ab3adb, type: 3}
+  - {fileID: 3557601712819316171, guid: 8973c3bffcd60a543a6a714dda9ddea3, type: 3}
+  AvailableDeBuffs:
+  - {fileID: 2492600036242764532, guid: 88819e00f4689a44496f96b4100873ac, type: 3}
+  - {fileID: 807503376756157358, guid: 027b8e1ef5f20f84291e4e4bc23eb3e7, type: 3}
+  - {fileID: -1120453766289024631, guid: 936b8092db57ca345bdbfbc6be3e2b3a, type: 3}
+  - {fileID: -3589933402280597161, guid: 957fd0ae6ba602a499fd9a53e739b797, type: 3}
+  - {fileID: 3557601712819316171, guid: 961fb21f23c9cd3439fe0f5259bd72fb, type: 3}
+  BuffChance: 25
+  DebuffChance: 25
 --- !u!1 &1779407156689739043
 GameObject:
   m_ObjectHideFlags: 0

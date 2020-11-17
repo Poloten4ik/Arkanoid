@@ -6,9 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region Singleton
+    private static GameManager _instance;
+
+    public static GameManager Instance => _instance;
+
+    private void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    #endregion
+
     public int score;
     public Text scoreText;
     public int lives = 3;
+    public bool isStarted { get; set; }
 
     [HideInInspector]
     public bool pauseActive;
@@ -21,21 +40,6 @@ public class GameManager : MonoBehaviour
     public GameObject pause;
     public GameObject gameover;
    
-    private void Awake()
-    {
-        GameManager[] gameManagers = FindObjectsOfType<GameManager>();
-        for (int i = 0; i < gameManagers.Length; i++)
-        {
-            if (gameManagers[i].gameObject != gameObject)
-            {
-                Destroy(gameObject);
-                gameObject.SetActive(false);
-                break;
-            }
-        }
-        ball = FindObjectOfType<Ball>();
-    }
-
     private void Start()
     {
         scoreText.text = "0";
@@ -60,12 +64,17 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
-        lives--;
-        HeartsUpdate();
+        if (BallManager.Instance.Balls.Count <= 0 )
+        {
+            lives--;
+            HeartsUpdate();
+
+            StartCoroutine(BallManager.Instance.Restart());
+        }
 
         if (lives > 0)
         {
-            StartCoroutine(ball.Restart());
+           
         }
         else
         {
