@@ -17,6 +17,8 @@ namespace Asset.Scripts
         CollectablesManager collectablesManager;
         public Color color;
 
+        public float explosionRadius;
+        public bool explosion;
 
         private void Start()
         {
@@ -50,6 +52,11 @@ namespace Asset.Scripts
             SpawnDectroeEffect();
             Change();
             Destroy(gameObject);
+
+            if (explosion)
+            {
+                Explode();
+            }
         }
 
         private void Change()
@@ -97,6 +104,33 @@ namespace Asset.Scripts
             mm.startColor = color;
 
             Destroy(effect, destroyEffectPrefab.main.startLifetime.constant);
+
+          
+        }
+        
+        private  void Explode()
+        {
+            int layerMask = LayerMask.GetMask("Block");
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerMask);
+
+            foreach (Collider2D collider in colliders)
+            {
+                Block block = collider.GetComponent<Block>();
+                if ( block == null)
+                {
+                    Destroy(collider.gameObject);
+                }
+                else
+                {
+                    block.DestroyBlock();
+                }
+            }
+         }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, explosionRadius);
         }
     }
 }

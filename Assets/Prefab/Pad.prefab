@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c6433e1e348dd4b8f9b82040325f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoplay: 1
+  autoplay: 0
   magnetEffect: 0
   magnerPower: 3
 --- !u!60 &5434728745752099716

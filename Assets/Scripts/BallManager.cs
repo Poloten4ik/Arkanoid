@@ -29,6 +29,8 @@ namespace Asset.Scripts
         [SerializeField]
         private Ball ballPrefab;
 
+        float xDelta;
+
         public float speed;
         [HideInInspector]
         public Ball initialBall;
@@ -39,6 +41,7 @@ namespace Asset.Scripts
         private void Start()
         {
             InitBall();
+            xDelta = initialBall.transform.position.x - Pad.Instance.transform.position.x;
         }
 
         private void Update()
@@ -46,7 +49,7 @@ namespace Asset.Scripts
             if (!GameManager.Instance.isStarted)
             {
                 Vector3 padPosition = Pad.Instance.gameObject.transform.position;
-                Vector3 ballPosition = new Vector3(padPosition.x, padPosition.y + 0.5f, 0);
+                Vector3 ballPosition = new Vector3(padPosition.x + xDelta, padPosition.y + 0.5f, 0);
                 initialBall.transform.position = ballPosition;
 
                 if (Input.GetMouseButtonDown(0) && !GameManager.Instance.pauseActive)

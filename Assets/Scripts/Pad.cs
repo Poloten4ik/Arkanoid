@@ -16,8 +16,8 @@ namespace Asset.Scripts
         Ball ball;
         private SpriteRenderer sr;
         private float Clamp;
-        public bool magnetEffect;
-        public int magnerPower;
+        bool magnetEffect;
+        public int magnetPower;
 
         #region Singleton
 
@@ -41,7 +41,7 @@ namespace Asset.Scripts
 
         void Start()
         {
-            yPosition = this.transform.position.y;
+            yPosition = transform.position.y;
             ball = FindObjectOfType<Ball>();
             gameManager = FindObjectOfType<GameManager>();
             sr = GetComponent<SpriteRenderer>();
@@ -80,15 +80,19 @@ namespace Asset.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.CompareTag("Ball") && magnetEffect == true)
+            if (magnetEffect == true && collision.gameObject.CompareTag("Ball"))
             {
                 GameManager.Instance.isStarted = false;
-                magnerPower--;
-                if (magnerPower <= 0)
-                {
-                    magnetEffect = false;
-                }
+                //magnetPower--;
+                //if (magnetPower <= 0)
+                //{
+                //    magnetEffect = false;
+                //}
             }
+        }
+        public void ActivatedMagner()
+        {
+            magnetEffect = true;
         }
     }
 

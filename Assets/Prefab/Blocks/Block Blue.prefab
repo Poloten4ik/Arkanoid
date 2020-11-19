@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1597962551256690548}
   - component: {fileID: 1597962551256690549}
   - component: {fileID: 1597962551256690547}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Block Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,13 +126,6 @@ MonoBehaviour:
   points: 10
   destroyEffectPrefab: {fileID: 8574165115354046933, guid: 71414bf009f92db4a81e7c633e8bf3e5,
     type: 3}
-  ballPrefab: {fileID: 0}
-  Buff:
-  - {fileID: 2492600036242764535, guid: 009d048f26c6f2548b58e54ee2b021e2, type: 3}
-  - {fileID: 2983590395433641343, guid: 7b6857888b2aa4f48b8176c735ab3adb, type: 3}
-  - {fileID: 7713320899664945840, guid: ca037d5a4cd0d7b48a252e4168833420, type: 3}
-  DeBuff:
-  - {fileID: 2983590395433641343, guid: 957fd0ae6ba602a499fd9a53e739b797, type: 3}
-  - {fileID: 7713320899664945840, guid: 027b8e1ef5f20f84291e4e4bc23eb3e7, type: 3}
-  - {fileID: 3557601712819316183, guid: 961fb21f23c9cd3439fe0f5259bd72fb, type: 3}
   color: {r: 0.2901961, g: 0.75294125, b: 0.93725497, a: 1}
+  explosionRadius: 0
+  explosion: 0

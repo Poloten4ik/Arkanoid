@@ -7,8 +7,8 @@ namespace Asset.Scripts.PickUps
     {
         public override void ApplyEffect()
         {
-            Pad.Instance.magnetEffect = true;
-            Pad.Instance.magnerPower = 3;
+            Pad.Instance.ActivatedMagner();
+           // Pad.Instance.magnetPower = 3;
         }
     }
 }

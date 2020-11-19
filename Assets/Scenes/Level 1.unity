@@ -313,8 +313,8 @@ Transform:
   m_LocalPosition: {x: -5.01, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1631806675}
   - {fileID: 1645298536}
+  - {fileID: 1631806675}
   - {fileID: 647176633}
   - {fileID: 2122020872}
   - {fileID: 224029689}
@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6317778903937472710, guid: 883656ae09a029e49b2cc43801f616f2,
     type: 3}
-  speed: 30
+  speed: 4
   initialBall: {fileID: 0}
   initialBallRb: {fileID: 0}
 --- !u!4 &519065217
@@ -5719,7 +5719,7 @@ PrefabInstance:
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
@@ -5753,8 +5753,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2541027383752744026, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
-      propertyPath: points
-      value: 10
+      propertyPath: explosionRadius
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 2541027383752744030, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
@@ -5769,7 +5769,7 @@ PrefabInstance:
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
@@ -5799,7 +5799,7 @@ PrefabInstance:
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2541027383752744031, guid: 79eb0b8f28aec1c4b9c4597ea2689d97,
         type: 3}
