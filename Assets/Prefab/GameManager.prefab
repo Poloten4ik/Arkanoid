@@ -57,8 +57,8 @@ MonoBehaviour:
   - {fileID: -1120453766289024631, guid: 936b8092db57ca345bdbfbc6be3e2b3a, type: 3}
   - {fileID: -3589933402280597161, guid: 957fd0ae6ba602a499fd9a53e739b797, type: 3}
   - {fileID: 3557601712819316171, guid: 961fb21f23c9cd3439fe0f5259bd72fb, type: 3}
-  BuffChance: 25
-  DebuffChance: 25
+  BuffChance: 10
+  DebuffChance: 10
 --- !u!1 &1779407156689739043
 GameObject:
   m_ObjectHideFlags: 0

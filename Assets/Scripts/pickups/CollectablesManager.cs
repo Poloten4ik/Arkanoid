@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectablesManager : MonoBehaviour
+namespace Asset.Scripts.PickUps
 {
+    public class CollectablesManager : MonoBehaviour
+    {
 
-    public List<PickUps> AvailableBuffs;
-    public List<PickUps> AvailableDeBuffs;
+        public List<AbstractPickUp> AvailableBuffs;
+        public List<AbstractPickUp> AvailableDeBuffs;
 
-    [Range(0,100)]
-    public float BuffChance;
-    [Range(0, 100)]
-    public float DebuffChance;
+        [Range(0, 100)]
+        public float BuffChance;
+        [Range(0, 100)]
+        public float DebuffChance;
 
+    }
 }

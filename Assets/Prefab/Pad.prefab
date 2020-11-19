@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoplay: 1
+  magnetEffect: 0
+  magnerPower: 3
 --- !u!60 &5434728745752099716
 PolygonCollider2D:
   m_ObjectHideFlags: 0

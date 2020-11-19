@@ -2931,7 +2931,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6317778903937472710, guid: 883656ae09a029e49b2cc43801f616f2,
     type: 3}
-  speed: 400
+  speed: 5
+  initialBall: {fileID: 0}
   initialBallRb: {fileID: 0}
 --- !u!4 &1392521714
 Transform:

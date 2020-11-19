@@ -1,9 +1,12 @@
-﻿public class Score : PickUps
+﻿namespace Asset.Scripts.PickUps
 {
-    public int points;
-    public override void ApplyEffect()
+    public class Score : AbstractPickUp
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        gameManager.AddScore(points);
+        public int points;
+        public override void ApplyEffect()
+        {
+            GameManager.Instance.AddScore(points);
+        }
     }
 }
+

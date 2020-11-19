@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LoseGame : MonoBehaviour
+namespace Asset.Scripts
 {
-    private void OnTriggerExit2D(Collider2D collision)
+    public class LoseGame : MonoBehaviour
     {
-        if (collision.tag == "Ball")
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            Ball ball = collision.GetComponent<Ball>();
-            BallManager.Instance.Balls.Remove(ball);
-            ball.Die();
-        }   
+            if (collision.tag == "Ball")
+            {
+                Ball ball = collision.GetComponent<Ball>();
+                BallManager.Instance.Balls.Remove(ball);
+                ball.Die();
+            }
+        }
     }
 }
+

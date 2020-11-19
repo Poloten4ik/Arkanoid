@@ -1,16 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class Ball : MonoBehaviour
+namespace Asset.Scripts
 {
-
-    public Collider2D colliderBall;
-    public void Die()
+    public class Ball : MonoBehaviour
     {
-        GameManager.Instance.LoseLife();
-        Destroy(gameObject);
+        public float newSpeed;
+        public void Die()
+        {
+            GameManager.Instance.LoseLife();
+            Destroy(gameObject);
+        }
+
+        public void SpeedUp()
+        {
+            GetComponent<Rigidbody2D>().velocity *= newSpeed;
+        }
+
+        public void SpeedDown()
+        {
+            GetComponent<Rigidbody2D>().velocity /= newSpeed;
+        }
+
+        public void Restart()
+        {
+            GameManager.Instance.isStarted = false;
+            BallManager.Instance.initialBallRb.velocity = Vector2.zero;
+        }
     }
 }
+

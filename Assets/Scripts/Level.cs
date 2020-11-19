@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Level : MonoBehaviour
+namespace Asset.Scripts
 {
-    public int blockscount;
-    public int Hp;
+    public class Level : MonoBehaviour
+    {
+        public int blockscount;
+        public int Hp;
 
-    public void BlockCreated()
-    {
-        blockscount++;
-    }
-    public void BlockDestroyed()
-    {
-        blockscount--;
-        if (blockscount <= 0)
+        public void BlockCreated()
         {
-            int index = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(index + 1);
-            GameManager.Instance.isStarted = false;
+            blockscount++;
+        }
+        public void BlockDestroyed()
+        {
+            blockscount--;
+            if (blockscount <= 0)
+            {
+                int index = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(index + 1);
+                GameManager.Instance.isStarted = false;
+            }
         }
     }
 }
+

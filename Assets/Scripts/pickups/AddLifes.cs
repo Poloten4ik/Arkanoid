@@ -1,7 +1,10 @@
-﻿public class AddLifes : PickUps
+﻿namespace Asset.Scripts.PickUps
 {
-    public override void ApplyEffect()
+ public class AddLifes : AbstractPickUp
     {
-        GameManager.Instance.AddLife();  
+        public override void ApplyEffect()
+        {
+            GameManager.Instance.AddLife();
+        }
     }
 }

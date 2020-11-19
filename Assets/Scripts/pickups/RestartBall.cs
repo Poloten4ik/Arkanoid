@@ -1,16 +1,15 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class RestartBall : PickUps
+namespace Asset.Scripts.PickUps
 {
-    public override void ApplyEffect()
+    public class RestartBall : AbstractPickUp
     {
-
-        foreach (var ball in BallManager.Instance.Balls.ToList())
+        public override void ApplyEffect()
         {
-            GameManager.Instance.isStarted = false;
-            BallManager.Instance.initialBallRb.velocity = Vector2.zero;
+            Pad.Instance.magnetEffect = true;
+            Pad.Instance.magnerPower = 3;
         }
-     
     }
 }
+

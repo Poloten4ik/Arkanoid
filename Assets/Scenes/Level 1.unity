@@ -1299,7 +1299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 6317778903937472710, guid: 883656ae09a029e49b2cc43801f616f2,
     type: 3}
-  speed: 300
+  speed: 30
   initialBall: {fileID: 0}
   initialBallRb: {fileID: 0}
 --- !u!4 &519065217
@@ -7361,14 +7361,6 @@ PrefabInstance:
       propertyPath: Debuff
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 1538015095, guid: ed9dbb63f7dcb7949bebafab1bb37ed8, type: 3}
-      propertyPath: BuffChance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538015095, guid: ed9dbb63f7dcb7949bebafab1bb37ed8, type: 3}
-      propertyPath: DebuffChance
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 3040044578396786719, guid: ed9dbb63f7dcb7949bebafab1bb37ed8,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -7527,11 +7519,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6881367482968809799, guid: 7d7a13705f119cc42b87660f15dbf20c,
-        type: 3}
-      propertyPath: autoplay
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7a13705f119cc42b87660f15dbf20c, type: 3}

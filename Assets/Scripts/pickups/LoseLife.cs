@@ -1,7 +1,10 @@
-﻿public class LoseLife : PickUps
+﻿namespace Asset.Scripts.PickUps
 {
-    public override void ApplyEffect()
+    public class LoseLife : AbstractPickUp
     {
-        GameManager.Instance.LifeLose();
+        public override void ApplyEffect()
+        {
+            GameManager.Instance.LifeLose();
+        }
     }
 }

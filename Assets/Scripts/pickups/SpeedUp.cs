@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Linq;
 
-public class SpeedUp : PickUps
+namespace Asset.Scripts.PickUps
 {
-    public float newSpeed;
-    public override void ApplyEffect()
+    public class SpeedUp : AbstractPickUp
     {
-        BallManager.Instance.initialBallRb.AddForce(new Vector2(0, newSpeed));
+        public override void ApplyEffect()
+        {
+            foreach (Ball ball in BallManager.Instance.Balls.ToList())
+            {
+                ball.SpeedUp();
+            }
+        }
     }
+
 }

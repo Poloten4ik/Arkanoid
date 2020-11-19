@@ -1,11 +1,15 @@
 ﻿using System.Linq;
-public class MultiBall : PickUps
+
+namespace Asset.Scripts.PickUps
 {
-    public override void ApplyEffect()
+    public class MultiBall : AbstractPickUp
     {
-        foreach (Ball balls in BallManager.Instance.Balls.ToList())
+        public override void ApplyEffect()
         {
-            BallManager.Instance.SpawnBalls(balls.gameObject.transform.position, 2);
-        }   
+            foreach (Ball balls in BallManager.Instance.Balls.ToList())
+            {
+                BallManager.Instance.SpawnBalls(balls.gameObject.transform.position, 2);
+            }
+        }
     }
 }

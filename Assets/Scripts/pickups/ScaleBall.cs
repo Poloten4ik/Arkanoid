@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-public class ScaleBall : PickUps
+namespace Asset.Scripts.PickUps
 {
-    public float x;
-    public float y;
-    public override void ApplyEffect()
-    {   
-        Ball[] ball = FindObjectsOfType<Ball>();
-        for( int i = 0; i < ball.Length; i++)
+    public class ScaleBall : AbstractPickUp
+    {
+        public float x;
+        public float y;
+        public override void ApplyEffect()
         {
-            ball[i].transform.localScale = new Vector2(x, y);
+            for (int i = 0; i < BallManager.Instance.Balls.Count; i++)
+            {
+                BallManager.Instance.Balls[i].transform.localScale = new Vector2(x, y);
+            }
         }
-    }   
+    }
 }
+
