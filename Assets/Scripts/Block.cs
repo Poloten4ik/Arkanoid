@@ -13,6 +13,7 @@ namespace Asset.Scripts
         public int points;
         GameManager gameManager;
         Level levelManager;
+        Ball ball;
         public ParticleSystem destroyEffectPrefab;
         CollectablesManager collectablesManager;
         public Color color;
@@ -26,14 +27,14 @@ namespace Asset.Scripts
             gameManager = FindObjectOfType<GameManager>();
             levelManager = FindObjectOfType<Level>();
             levelManager.BlockCreated();
-
+            ball = FindObjectOfType<Ball>();
             collectablesManager = FindObjectOfType<CollectablesManager>();
         }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             hit--;
-
-            if (hit <= 0)
+            if (hit <= 0 || ball.isElectricityBall)
             {
                 DestroyBlock();
             }
@@ -42,10 +43,15 @@ namespace Asset.Scripts
                 currentImage.sprite = nextImage[hit - 1];
             }
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (ball.isElectricityBall)
+            {
+                DestroyBlock();
+            }
+        }
 
-
-
-        private void DestroyBlock()
+        public void DestroyBlock()
         {
             gameManager.AddScore(points);
             levelManager.BlockDestroyed();
@@ -61,20 +67,18 @@ namespace Asset.Scripts
 
         private void Change()
         {
-            float buffSpawnChange = UnityEngine.Random.Range(0, 100);
-            float deBuffSpawnChange = UnityEngine.Random.Range(0, 100f);
-            bool alreadySpawned = false;
+            float buffSpawnChange = Random.Range(0, 100);
+            float deBuffSpawnChange = Random.Range(0, 100f);
 
 
-            if (buffSpawnChange <= collectablesManager.BuffChance)
+            if (buffSpawnChange < collectablesManager.BuffChance)
             {
-                alreadySpawned = true;
-                AbstractPickUp newBuff = SpawnPickUps(true);
+                SpawnPickUps(true);
             }
 
-            if (deBuffSpawnChange <= collectablesManager.DebuffChance && !alreadySpawned)
+            if (deBuffSpawnChange < collectablesManager.DebuffChance)
             {
-                AbstractPickUp newDebuff = SpawnPickUps(false);
+                SpawnPickUps(false);
             }
         }
 
@@ -89,7 +93,7 @@ namespace Asset.Scripts
             {
                 collection = collectablesManager.AvailableDeBuffs;
             }
-            int buffIndex = UnityEngine.Random.Range(0, collection.Count);
+            int buffIndex = Random.Range(0, collection.Count);
             AbstractPickUp prefab = collection[buffIndex];
             AbstractPickUp newCollectable = Instantiate(prefab, this.transform.position, Quaternion.identity);
             return newCollectable;
@@ -99,16 +103,12 @@ namespace Asset.Scripts
             Vector3 blockPos = gameObject.transform.position;
             Vector3 spawnPosition = new Vector3(blockPos.x, blockPos.y, blockPos.z + 0.1f);
             GameObject effect = Instantiate(destroyEffectPrefab.gameObject, spawnPosition, Quaternion.identity);
-
             MainModule mm = effect.GetComponent<ParticleSystem>().main;
             mm.startColor = color;
-
             Destroy(effect, destroyEffectPrefab.main.startLifetime.constant);
-
-          
         }
-        
-        private  void Explode()
+
+        private void Explode()
         {
             int layerMask = LayerMask.GetMask("Block");
 
@@ -117,7 +117,7 @@ namespace Asset.Scripts
             foreach (Collider2D collider in colliders)
             {
                 Block block = collider.GetComponent<Block>();
-                if ( block == null)
+                if (block == null)
                 {
                     Destroy(collider.gameObject);
                 }
@@ -126,7 +126,7 @@ namespace Asset.Scripts
                     block.DestroyBlock();
                 }
             }
-         }
+        }
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;

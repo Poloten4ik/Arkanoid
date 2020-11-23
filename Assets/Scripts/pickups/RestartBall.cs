@@ -7,8 +7,11 @@ namespace Asset.Scripts.PickUps
     {
         public override void ApplyEffect()
         {
-            Pad.Instance.ActivatedMagner();
-           // Pad.Instance.magnetPower = 3;
+            Ball[] balls = FindObjectsOfType<Ball>();
+            foreach (Ball ball in balls)
+            {
+                ball.ActivateMagnet();
+            }
         }
     }
 }

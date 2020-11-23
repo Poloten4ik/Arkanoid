@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2983590395433641339}
   - component: {fileID: 2983590395433641336}
   - component: {fileID: 2983590395433641337}
-  - component: {fileID: -6081211723342981416}
+  - component: {fileID: 8927804289915193988}
   m_Layer: 0
   m_Name: SpeedDown
   m_TagString: Untagged
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6081211723342981416
+--- !u!114 &8927804289915193988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2983590395433641343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b942769f2e8b4a4d86c5fbd420c7b80, type: 3}
+  m_Script: {fileID: 11500000, guid: af48fa0905916bc4a88573d9e8ab81ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSpeed: 2
+  newSpeed: 0.5

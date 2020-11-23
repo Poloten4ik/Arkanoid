@@ -16,8 +16,7 @@ namespace Asset.Scripts
         Ball ball;
         private SpriteRenderer sr;
         private float Clamp;
-        bool magnetEffect;
-        public int magnetPower;
+        public ParticleSystem magnetActive;
 
         #region Singleton
 
@@ -44,7 +43,7 @@ namespace Asset.Scripts
             yPosition = transform.position.y;
             ball = FindObjectOfType<Ball>();
             gameManager = FindObjectOfType<GameManager>();
-            sr = GetComponent<SpriteRenderer>();
+
         }
 
         void Update()
@@ -57,7 +56,7 @@ namespace Asset.Scripts
             Vector3 padNewposition;
             if (autoplay)
             {
-                Vector3 ballPos = BallManager.Instance.initialBall.transform.position;
+                Vector3 ballPos = ball.transform.position;
                 padNewposition = new Vector3(ballPos.x, yPosition, 0);
 
             }
@@ -80,20 +79,9 @@ namespace Asset.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (magnetEffect == true && collision.gameObject.CompareTag("Ball"))
-            {
-                GameManager.Instance.isStarted = false;
-                //magnetPower--;
-                //if (magnetPower <= 0)
-                //{
-                //    magnetEffect = false;
-                //}
-            }
+
         }
-        public void ActivatedMagner()
-        {
-            magnetEffect = true;
-        }
+
     }
 
 

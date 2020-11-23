@@ -7,9 +7,15 @@ namespace Asset.Scripts
 {
     public class Level : MonoBehaviour
     {
+        Ball ball;
         public int blockscount;
         public int Hp;
+        public Scene[] scenes;
 
+        private void Start()
+        {
+            ball = FindObjectOfType<Ball>();
+        }
         public void BlockCreated()
         {
             blockscount++;
@@ -17,12 +23,22 @@ namespace Asset.Scripts
         public void BlockDestroyed()
         {
             blockscount--;
+
             if (blockscount <= 0)
             {
                 int index = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(index + 1);
-                GameManager.Instance.isStarted = false;
+                ball.isStarted = false;
+
+
+
             }
+        }
+
+
+        public void LoadScene(int index)
+        {
+            SceneManager.LoadScene(index);
         }
     }
 }

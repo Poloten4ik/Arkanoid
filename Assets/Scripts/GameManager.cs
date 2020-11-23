@@ -30,7 +30,6 @@ namespace Asset.Scripts
         public int score;
         public Text scoreText;
         public int lives = 3;
-        public bool isStarted { get; set; }
 
         [HideInInspector]
         public bool pauseActive;
@@ -47,6 +46,7 @@ namespace Asset.Scripts
         {
             scoreText.text = "0";
             DontDestroyOnLoad(gameObject);
+            ball = FindObjectOfType<Ball>();
         }
 
         public void AddScore(int addScore)
@@ -67,19 +67,12 @@ namespace Asset.Scripts
 
         public void LoseLife()
         {
-            if (BallManager.Instance.Balls.Count <= 0)
+            if (lives > 0)
             {
                 lives--;
                 HeartsUpdate();
-
-                StartCoroutine(BallManager.Instance.Restart());
             }
 
-            if (lives > 0)
-            {
-
-            }
-            else
             {
                 GameOver();
             }
@@ -96,15 +89,6 @@ namespace Asset.Scripts
 
         public void LifeLose()
         {
-            if (lives > 0)
-            {
-                lives--;
-                HeartsUpdate();
-            }
-
-            {
-                GameOver();
-            }
         }
 
         public void UnPause()

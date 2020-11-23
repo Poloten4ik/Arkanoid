@@ -8,10 +8,13 @@ namespace Asset.Scripts.PickUps
         public float y;
         public override void ApplyEffect()
         {
-            for (int i = 0; i < BallManager.Instance.Balls.Count; i++)
+            Ball[] balls = FindObjectsOfType<Ball>();
+            foreach (Ball ball in balls)
             {
-                BallManager.Instance.Balls[i].transform.localScale = new Vector2(x, y);
+                ball.transform.localScale = new Vector2(x, y);
             }
+
+
         }
     }
 }

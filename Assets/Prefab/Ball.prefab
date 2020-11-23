@@ -28,9 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6317778903937472707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: -3.97, z: -1}
+  m_LocalPosition: {x: -0.02, y: -4.143, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1122279393193080654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,4 +134,119 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df59bfdf7757db740b6bd2318f03639e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newSpeed: 2
+  speed: 10
+  rb: {fileID: 6317778903937472706}
+  isStarted: 0
+  isMagnetActive: 0
+  ballExplosionRadius: 2
+  magnetDuration: 10
+  isExplosion: 0
+  electricityBall: {fileID: 1122279393212477966}
+  electricityBallDuratiom: 10
+  isElectricityBall: 0
+--- !u!1001 &32738585359435360
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6317778903937472711}
+    m_Modifications:
+    - target: {fileID: 1146004170349243662, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_Name
+      value: CFX_ElectricityBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349243662, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170368087150, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170368087150, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170368087150, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146004170368087150, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a16e5d00cc588b24781dcd64d4d7b9e2, type: 3}
+--- !u!4 &1122279393193080654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1146004170349736238, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 32738585359435360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1122279393212477966 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1146004170368087150, guid: a16e5d00cc588b24781dcd64d4d7b9e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 32738585359435360}
+  m_PrefabAsset: {fileID: 0}

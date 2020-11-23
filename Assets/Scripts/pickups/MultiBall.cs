@@ -6,10 +6,8 @@ namespace Asset.Scripts.PickUps
     {
         public override void ApplyEffect()
         {
-            foreach (Ball balls in BallManager.Instance.Balls.ToList())
-            {
-                BallManager.Instance.SpawnBalls(balls.gameObject.transform.position, 2);
-            }
+            Ball ball = FindObjectOfType<Ball>();
+            ball.Duplicate();
         }
     }
 }

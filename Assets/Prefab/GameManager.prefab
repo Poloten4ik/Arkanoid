@@ -44,21 +44,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableBuffs:
-  - {fileID: 7236383135489083931, guid: 432602b041e440e41bffc49e73d3b710, type: 3}
-  - {fileID: 2492600036242764532, guid: 009d048f26c6f2548b58e54ee2b021e2, type: 3}
-  - {fileID: 807503376756157358, guid: ca037d5a4cd0d7b48a252e4168833420, type: 3}
+  - {fileID: 6332591738652991476, guid: 1a4fbb89c2c01c64e9ffe97eccb380e0, type: 3}
+  - {fileID: 3879095874847235608, guid: df0dd1f147945a742a6d970f5bd8b7d8, type: 3}
   - {fileID: 5860844532823027260, guid: 4cd46efc2e0afcc449deb4119cea3a21, type: 3}
-  - {fileID: -1610560992535100988, guid: 01339dbb91145b2478cf2abaae2f0fd0, type: 3}
-  - {fileID: -6081211723342981416, guid: 7b6857888b2aa4f48b8176c735ab3adb, type: 3}
-  - {fileID: 3557601712819316171, guid: 8973c3bffcd60a543a6a714dda9ddea3, type: 3}
   AvailableDeBuffs:
   - {fileID: 2492600036242764532, guid: 88819e00f4689a44496f96b4100873ac, type: 3}
   - {fileID: 807503376756157358, guid: 027b8e1ef5f20f84291e4e4bc23eb3e7, type: 3}
-  - {fileID: -1120453766289024631, guid: 936b8092db57ca345bdbfbc6be3e2b3a, type: 3}
-  - {fileID: -3589933402280597161, guid: 957fd0ae6ba602a499fd9a53e739b797, type: 3}
   - {fileID: 3557601712819316171, guid: 961fb21f23c9cd3439fe0f5259bd72fb, type: 3}
-  BuffChance: 10
-  DebuffChance: 10
+  BuffChance: 5
+  DebuffChance: 5
 --- !u!1 &1779407156689739043
 GameObject:
   m_ObjectHideFlags: 0

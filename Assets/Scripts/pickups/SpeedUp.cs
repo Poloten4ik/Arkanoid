@@ -4,11 +4,13 @@ namespace Asset.Scripts.PickUps
 {
     public class SpeedUp : AbstractPickUp
     {
+        public float newSpeed;
         public override void ApplyEffect()
         {
-            foreach (Ball ball in BallManager.Instance.Balls.ToList())
+            Ball[] balls = FindObjectsOfType<Ball>();
+            foreach (Ball ball in balls)
             {
-                ball.SpeedUp();
+                ball.MultiplySpeed(newSpeed);
             }
         }
     }
