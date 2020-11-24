@@ -121,6 +121,7 @@ namespace Asset.Scripts
         {
             if (!isElectricityBall)
             {
+               
                 isElectricityBall = true;
                 electricityBall.gameObject.SetActive(true);
                 StartCoroutine(StopElectricityBall(electricityBallDuratiom));

@@ -32,7 +32,6 @@ namespace Asset.Scripts
             if (!isShield)
             {
                 gameObject.GetComponent<Collider2D>().isTrigger = false;
-                isShield = true;
                 StartCoroutine(StopShieldDuration(duration));
                 shieldActive.gameObject.SetActive(true);
             }
@@ -40,11 +39,10 @@ namespace Asset.Scripts
 
         private IEnumerator StopShieldDuration(float second)
         {
-            if (isShield)
-            {
-                yield return new WaitForSeconds(second);
-                StopShield();
-            }
+
+            yield return new WaitForSeconds(second);
+            StopShield();
+
         }
 
         private void StopShield()
@@ -52,7 +50,6 @@ namespace Asset.Scripts
             LoseGame lose = FindObjectOfType<LoseGame>();
             lose.gameObject.GetComponent<Collider2D>().isTrigger = true;
             shieldActive.gameObject.SetActive(false);
-            isShield = false;
         }
     }
 }

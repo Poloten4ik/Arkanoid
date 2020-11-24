@@ -27,7 +27,8 @@ namespace Asset.Scripts
             if (blockscount <= 0)
             {
                 int index = SceneManager.GetActiveScene().buildIndex;
-                if (index < 5)
+
+                if (index < SceneManager.sceneCountInBuildSettings - 1)
                 {
                     SceneManager.LoadScene(index + 1);
                 }

@@ -13,10 +13,10 @@ namespace Asset.Scripts.PickUps
             }
 
             Block[] blocks = FindObjectsOfType<Block>();
-            foreach(Block block in blocks)
+            foreach (Block block in blocks)
             {
                 block.gameObject.GetComponent<Collider2D>().isTrigger = true;
-            }    
+            }
         }
     }
 }
