@@ -13,8 +13,6 @@ namespace Asset.Scripts.PickUps
             {
                 ball.transform.localScale = new Vector2(x, y);
             }
-
-
         }
     }
 }

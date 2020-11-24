@@ -27,7 +27,6 @@ namespace Asset.Scripts
 
             }
         }
-
         public void StartShield()
         {
             if (!isShield)

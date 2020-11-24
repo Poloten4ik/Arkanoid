@@ -6,7 +6,6 @@ namespace Asset.Scripts.PickUps
 {
     public class CollectablesManager : MonoBehaviour
     {
-
         public List<AbstractPickUp> AvailableBuffs;
         public List<AbstractPickUp> AvailableDeBuffs;
 
@@ -14,6 +13,5 @@ namespace Asset.Scripts.PickUps
         public float BuffChance;
         [Range(0, 100)]
         public float DebuffChance;
-
     }
 }

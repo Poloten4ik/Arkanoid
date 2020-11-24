@@ -27,14 +27,17 @@ namespace Asset.Scripts
             if (blockscount <= 0)
             {
                 int index = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(index + 1);
-                ball.isStarted = false;
-
-
-
+                if (index < 5)
+                {
+                    SceneManager.LoadScene(index + 1);
+                }
+                else
+                {
+                    GameManager gameManager = FindObjectOfType<GameManager>();
+                    gameManager.WinScreen();
+                }
             }
         }
-
 
         public void LoadScene(int index)
         {

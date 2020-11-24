@@ -77,11 +77,6 @@ namespace Asset.Scripts
             transform.position = padNewposition;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-
-        }
-
     }
 
 

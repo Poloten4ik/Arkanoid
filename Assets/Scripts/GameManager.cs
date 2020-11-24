@@ -37,10 +37,13 @@ namespace Asset.Scripts
 
         public bool gameOver;
         public Text gameoverText;
+        public Text winScreenText;
         Ball ball;
         public Image[] hearts;
         public GameObject pause;
         public GameObject gameover;
+
+        public GameObject winScreen;
 
         private void Start()
         {
@@ -87,10 +90,6 @@ namespace Asset.Scripts
             }
         }
 
-        public void LifeLose()
-        {
-        }
-
         public void UnPause()
         {
             Time.timeScale = 1f;
@@ -118,6 +117,15 @@ namespace Asset.Scripts
                 Time.timeScale = 0;
             }
         }
+
+        public void WinScreen()
+        {
+            winScreen.SetActive(true);
+            winScreenText.text = score.ToString();
+            pauseActive = true;
+            Time.timeScale = 0;
+        }
+
 
         public void HeartsUpdate()
         {

@@ -4,7 +4,7 @@
     {
         public override void ApplyEffect()
         {
-            GameManager.Instance.LifeLose();
+            GameManager.Instance.LoseLife();
         }
     }
 }

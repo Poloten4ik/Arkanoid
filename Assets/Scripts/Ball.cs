@@ -164,7 +164,6 @@ namespace Asset.Scripts
         {
             isStarted = false;
             gameObject.transform.localScale = new Vector2(1, 1);
-
         }
 
         private void OnCollisionExit2D(Collision2D collision)
