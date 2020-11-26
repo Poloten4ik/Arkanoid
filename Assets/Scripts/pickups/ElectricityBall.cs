@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace Asset.Scripts.PickUps
 {
@@ -7,16 +8,16 @@ namespace Asset.Scripts.PickUps
         public override void ApplyEffect()
         {
             Ball[] balls = FindObjectsOfType<Ball>();
+            Ball ballStatus = FindObjectOfType<Ball>();
+            Block block = FindObjectOfType<Block>();
+
             foreach (Ball ball in balls)
             {
                 ball.StartElectricityBall();
             }
 
-            Block[] blocks = FindObjectsOfType<Block>();
-            foreach (Block block in blocks)
-            {
-                block.gameObject.GetComponent<Collider2D>().isTrigger = true;
-            }
+            block.ElectricityBall(ballStatus.isElectricityBall);
+
         }
     }
 }

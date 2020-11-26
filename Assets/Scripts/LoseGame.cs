@@ -7,25 +7,29 @@ namespace Asset.Scripts
 
     public class LoseGame : MonoBehaviour
     {
-        Ball ball;
-        GameManager gameManager;
         public float duration;
         public bool isShield;
         public ParticleSystem shieldActive;
 
+        Ball ball;
+        GameManager gameManager;
         private void Start()
         {
-            ball = FindObjectOfType<Ball>();
+
             gameManager = FindObjectOfType<GameManager>();
         }
         private void OnTriggerExit2D(Collider2D collision)
         {
+
+
             if (collision.tag == "Ball")
             {
+                ball = FindObjectOfType<Ball>();
                 gameManager.LoseLife();
                 ball.Restart();
 
             }
+
         }
         public void StartShield()
         {

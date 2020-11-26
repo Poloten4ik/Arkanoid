@@ -134,16 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df59bfdf7757db740b6bd2318f03639e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rb: {fileID: 6317778903937472706}
-  isStarted: 0
-  isMagnetActive: 0
   ballExplosionRadius: 2
   magnetDuration: 10
-  isExplosion: 0
-  electricityBall: {fileID: 1122279393212477966}
+  speed: 10
   electricityBallDuratiom: 10
   isElectricityBall: 0
+  isStarted: 0
+  isMagnetActive: 0
+  isExplosion: 0
+  electricityBall: {fileID: 1122279393212477966}
+  rb: {fileID: 6317778903937472706}
+  balls: []
 --- !u!1001 &32738585359435360
 PrefabInstance:
   m_ObjectHideFlags: 0

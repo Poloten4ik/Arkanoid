@@ -8,16 +8,16 @@ namespace Asset.Scripts
 {
     public class Pad : MonoBehaviour
     {
-        private Camera mainCamera;
-        float yPosition;
+        private float yPosition;
         private float maxX = 7.2f;
-        public bool autoplay;
-        GameManager gameManager;
-        Ball ball;
-        private SpriteRenderer sr;
         private float Clamp;
+
+        public bool autoplay;
+
         public ParticleSystem magnetActive;
 
+        GameManager gameManager;
+        Ball ball;
         #region Singleton
 
         private static Pad _instance;

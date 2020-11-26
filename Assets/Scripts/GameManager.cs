@@ -28,28 +28,26 @@ namespace Asset.Scripts
         #endregion
 
         public int score;
-        public Text scoreText;
         public int lives = 3;
 
         [HideInInspector]
         public bool pauseActive;
-        [HideInInspector]
-
         public bool gameOver;
+
+        public Text scoreText;
         public Text gameoverText;
         public Text winScreenText;
-        Ball ball;
+
         public Image[] hearts;
+
         public GameObject pause;
         public GameObject gameover;
-
         public GameObject winScreen;
 
         private void Start()
         {
             scoreText.text = "0";
             DontDestroyOnLoad(gameObject);
-            ball = FindObjectOfType<Ball>();
         }
 
         public void AddScore(int addScore)

@@ -7,11 +7,12 @@ namespace Asset.Scripts
 {
     public class Level : MonoBehaviour
     {
-        Ball ball;
         public int blockscount;
         public int Hp;
+
         public Scene[] scenes;
 
+        Ball ball;
         private void Start()
         {
             ball = FindObjectOfType<Ball>();

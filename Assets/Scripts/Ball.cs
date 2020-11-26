@@ -5,27 +5,31 @@ using UnityEngine;
 namespace Asset.Scripts
 {
 
- 
+
     public class Ball : MonoBehaviour
     {
-        public float speed;
-
-        public Rigidbody2D rb;
-   
-        public bool isStarted;
-        public bool isMagnetActive;
-
         float yPosition;
         float xDelta;
+
         public float ballExplosionRadius;
         public float magnetDuration;
+        public float speed;
+        public float electricityBallDuratiom;
+
+
+        public int countOfBall = 1;
+
+        public bool isElectricityBall;
+        public bool isStarted;
+        public bool isMagnetActive;
         public bool isExplosion;
 
         public ParticleSystem electricityBall;
-        public float electricityBallDuratiom;
-        public bool isElectricityBall;
+        public Rigidbody2D rb;
 
         Pad pad;
+        Block block;
+        public List<Ball> balls;
 
         public void ActivateMagnet()
         {
@@ -40,7 +44,7 @@ namespace Asset.Scripts
 
         public IEnumerator StopMagnetEffect(float second)
         {
-           
+
             yield return new WaitForSeconds(second);
             StopMagnet();
         }
@@ -60,6 +64,7 @@ namespace Asset.Scripts
         void Start()
         {
             pad = FindObjectOfType<Pad>();
+            block = FindObjectOfType<Block>();
             yPosition = transform.position.y;
             xDelta = transform.position.x - pad.transform.position.x;
 
@@ -76,7 +81,7 @@ namespace Asset.Scripts
             newBall.speed = speed;
             newBall.StartBall();
         }
-      
+
         private void Update()
         {
             if (isStarted)
@@ -104,7 +109,7 @@ namespace Asset.Scripts
 
         private void StartBall()
         {
-            float randomX = Random.Range(0, 0);
+            float randomX = Random.Range(-1, 1);
             Vector2 direction = new Vector2(randomX, 1);
             Vector2 force = direction.normalized * speed;
             rb.velocity = force;
@@ -121,7 +126,6 @@ namespace Asset.Scripts
         {
             if (!isElectricityBall)
             {
-               
                 isElectricityBall = true;
                 electricityBall.gameObject.SetActive(true);
                 StartCoroutine(StopElectricityBall(electricityBallDuratiom));
@@ -131,11 +135,6 @@ namespace Asset.Scripts
         private IEnumerator StopElectricityBall(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            Block[] blocks = FindObjectsOfType<Block>();
-            foreach (Block block in blocks)
-            {
-                block.gameObject.GetComponent<Collider2D>().isTrigger = false;
-            }
             StopElectricityBall();
         }
 
@@ -148,7 +147,8 @@ namespace Asset.Scripts
                 {
                     ball.isElectricityBall = false;
                     ball.electricityBall.gameObject.SetActive(false);
-                }  
+                    block.ElectricityBall(isElectricityBall);
+                }
             }
         }
 

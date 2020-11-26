@@ -7,20 +7,23 @@ namespace Asset.Scripts
 {
     public class Block : MonoBehaviour
     {
-        public int hit = 1;
-        public Sprite[] nextImage;
         private SpriteRenderer currentImage;
+
+        public int hit = 1;
         public int points;
+
+        public float explosionRadius;
+
+        public bool explosion;
+
+        public Sprite[] nextImage;
+        public ParticleSystem destroyEffectPrefab;
+        public Color color;
+
+        CollectablesManager collectablesManager;
         GameManager gameManager;
         Level levelManager;
         Ball ball;
-        public ParticleSystem destroyEffectPrefab;
-        CollectablesManager collectablesManager;
-        public Color color;
-
-        public float explosionRadius;
-        public bool explosion;
-
         private void Start()
         {
             currentImage = GetComponent<SpriteRenderer>();
@@ -50,21 +53,6 @@ namespace Asset.Scripts
                 DestroyBlock();
             }
         }
-
-        public void DestroyBlock()
-        {
-            gameManager.AddScore(points);
-            levelManager.BlockDestroyed();
-            SpawnDectroeEffect();
-            Change();
-            Destroy(gameObject);
-
-            if (explosion)
-            {
-                Explode();
-            }
-        }
-
         private void Change()
         {
             float buffSpawnChange = Random.Range(0, 100);
@@ -98,6 +86,7 @@ namespace Asset.Scripts
             AbstractPickUp newCollectable = Instantiate(prefab, this.transform.position, Quaternion.identity);
             return newCollectable;
         }
+
         private void SpawnDectroeEffect()
         {
             Vector3 blockPos = gameObject.transform.position;
@@ -127,10 +116,42 @@ namespace Asset.Scripts
                 }
             }
         }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        }
+
+        public void ElectricityBall(bool ballStatus)
+        {
+            Block[] blocks = FindObjectsOfType<Block>();
+
+            foreach (Block block in blocks)
+            {
+                if (ballStatus)
+                {
+                    block.gameObject.GetComponent<Collider2D>().isTrigger = true;
+                }
+                else
+                {
+                    block.gameObject.GetComponent<Collider2D>().isTrigger = false;
+                }
+
+            }
+        }
+        public void DestroyBlock()
+        {
+            gameManager.AddScore(points);
+            levelManager.BlockDestroyed();
+            SpawnDectroeEffect();
+            Change();
+            Destroy(gameObject);
+
+            if (explosion)
+            {
+                Explode();
+            }
         }
     }
 }
