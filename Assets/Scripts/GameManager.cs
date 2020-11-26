@@ -9,23 +9,7 @@ namespace Asset.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        #region Singleton
-        private static GameManager _instance;
-
-        public static GameManager Instance => _instance;
-
-        private void Awake()
-        {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
-        }
-        #endregion
+        public static string keyBestScore = "bestRecord";
 
         public int score;
         public int lives = 3;
@@ -44,6 +28,15 @@ namespace Asset.Scripts
         public GameObject gameover;
         public GameObject winScreen;
 
+        [Header("Sounds")]
+        public AudioClip sndPauseActive;
+
+        AudioManager audioManager;
+
+        private void Awake()
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
         private void Start()
         {
             scoreText.text = "0";
@@ -54,8 +47,18 @@ namespace Asset.Scripts
         {
             score += addScore;
             scoreText.text = score.ToString();
+            SaveScore();
         }
 
+        public void SaveScore()
+        {
+            int oldBestScore = PlayerPrefs.GetInt(keyBestScore);
+            if (score > oldBestScore)
+            {
+                PlayerPrefs.SetInt(keyBestScore, score);
+            }
+          
+        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -63,6 +66,7 @@ namespace Asset.Scripts
                 Time.timeScale = 0f;
                 pauseActive = true;
                 pause.SetActive(true);
+                audioManager.PlaySound(sndPauseActive);
             }
         }
 
@@ -93,6 +97,7 @@ namespace Asset.Scripts
             Time.timeScale = 1f;
             pauseActive = false;
             pause.SetActive(false);
+
         }
 
         public void Restart()

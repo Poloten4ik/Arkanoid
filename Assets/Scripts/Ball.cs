@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace Asset.Scripts
 {
-
-
     public class Ball : MonoBehaviour
     {
         float yPosition;
@@ -25,11 +23,21 @@ namespace Asset.Scripts
         public bool isExplosion;
 
         public ParticleSystem electricityBall;
-        public Rigidbody2D rb;
+        public AudioClip electricityBallSound;
+
+        Rigidbody2D rb;
+
 
         Pad pad;
         Block block;
-        public List<Ball> balls;
+
+        AudioSource audioSource;
+
+        private void Awake()
+        {
+            rb = GetComponent<Rigidbody2D>();
+            audioSource = GetComponent<AudioSource>();
+        }
 
         public void ActivateMagnet()
         {
@@ -119,13 +127,17 @@ namespace Asset.Scripts
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawRay(transform.position, rb.velocity);
+            if (Application.isPlaying)
+            {
+                Gizmos.DrawRay(transform.position, rb.velocity);
+            }
         }
 
         public void StartElectricityBall()
         {
             if (!isElectricityBall)
             {
+                audioSource.clip = electricityBallSound;
                 isElectricityBall = true;
                 electricityBall.gameObject.SetActive(true);
                 StartCoroutine(StopElectricityBall(electricityBallDuratiom));
@@ -154,6 +166,7 @@ namespace Asset.Scripts
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            audioSource.Play();
             if (isMagnetActive && collision.gameObject.CompareTag("Pad"))
             {
                 yPosition = transform.position.y;

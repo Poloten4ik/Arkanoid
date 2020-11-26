@@ -122,10 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hit: 1
-  nextImage: []
   points: 10
+  explosionRadius: 1.55
+  explosion: 0
+  nextImage: []
   destroyEffectPrefab: {fileID: 8574165115354046933, guid: 71414bf009f92db4a81e7c633e8bf3e5,
     type: 3}
   color: {r: 0.9490197, g: 0.21568629, b: 0.21568629, a: 1}
-  explosionRadius: 1.55
-  explosion: 0
+  andDestroyBlock: {fileID: 8300000, guid: c35b5037bbb99b64db7eaa462da7feb1, type: 3}

@@ -10,7 +10,6 @@ namespace Asset.Scripts
         public int blockscount;
         public int Hp;
 
-        public Scene[] scenes;
 
         Ball ball;
         private void Start()
@@ -32,6 +31,10 @@ namespace Asset.Scripts
                 if (index < SceneManager.sceneCountInBuildSettings - 1)
                 {
                     SceneManager.LoadScene(index + 1);
+
+                    GameManager gameManager = FindObjectOfType<GameManager>();
+                    gameManager.SaveScore();
+
                 }
                 else
                 {

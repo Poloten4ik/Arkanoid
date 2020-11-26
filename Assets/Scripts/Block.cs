@@ -22,16 +22,27 @@ namespace Asset.Scripts
 
         CollectablesManager collectablesManager;
         GameManager gameManager;
+        AudioManager audioManager;
+
+        [Header("Sounds")]
+        public AudioClip andDestroyBlock;
+
         Level levelManager;
+
         Ball ball;
+
         private void Start()
         {
             currentImage = GetComponent<SpriteRenderer>();
             gameManager = FindObjectOfType<GameManager>();
+
             levelManager = FindObjectOfType<Level>();
             levelManager.BlockCreated();
+
             ball = FindObjectOfType<Ball>();
             collectablesManager = FindObjectOfType<CollectablesManager>();
+
+            audioManager = FindObjectOfType<AudioManager>();
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -142,6 +153,7 @@ namespace Asset.Scripts
         }
         public void DestroyBlock()
         {
+            audioManager.PlaySound(andDestroyBlock);
             gameManager.AddScore(points);
             levelManager.BlockDestroyed();
             SpawnDectroeEffect();
